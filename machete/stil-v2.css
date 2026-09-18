@@ -651,3 +651,17 @@ svg{width:100%;height:100%}
 .sp-dep .sp-ic{background:rgba(255,255,255,.2);color:#fff}
 .sp-dep::after{color:#fff;opacity:.85}
 .sp-dep:hover{box-shadow:0 16px 34px -14px rgba(46,107,255,.75)}
+
+/* --- casetele laterale se incadreaza exact in inaltimea bannerului --- */
+.promo-top{align-items:start}
+.side-promo{height:400px;grid-template-rows:repeat(3,1fr);gap:10px}
+.sp{padding:14px 20px;min-height:0;overflow:hidden}
+.sp .sp-ic{width:32px;height:32px;padding:7px;border-radius:9px;margin-bottom:6px}
+.sp b{font-size:15.2px;line-height:1.25}
+.sp span{font-size:12.2px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sp::after{right:18px;font-size:18px}
+@media(max-width:1180px){ .side-promo{height:auto} .sp{padding:16px 20px} }
+
+/* --- mega-meniu: rama albastra, delimitare clara fata de banner --- */
+.mega{border:2px solid #0C39AE;border-top:0;border-radius:0 0 14px 14px;
+  box-shadow:0 26px 54px -14px rgba(6,22,49,.45);padding:22px}
