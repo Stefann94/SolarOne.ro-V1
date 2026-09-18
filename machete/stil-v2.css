@@ -665,3 +665,47 @@ svg{width:100%;height:100%}
 /* --- mega-meniu: rama albastra, delimitare clara fata de banner --- */
 .mega{border:2px solid #0C39AE;border-top:0;border-radius:0 0 14px 14px;
   box-shadow:0 26px 54px -14px rgba(6,22,49,.45);padding:22px}
+
+/* =========================================================
+   ANTETUL ALB — mai compact, cu textura si accente
+   ========================================================= */
+.hd{
+  background:linear-gradient(180deg,#FFFFFF 0%,#F7F9FD 100%);
+  border-bottom:1px solid #DDE4EE;
+  box-shadow:0 1px 0 rgba(255,255,255,.7) inset;
+  position:relative;
+}
+/* aura calda in spatele logoului, ca razele din marca */
+.hd::before{content:'';position:absolute;left:0;top:0;bottom:0;width:520px;pointer-events:none;
+  background:radial-gradient(360px 200px at 18% 50%, rgba(255,206,10,.14), transparent 70%)}
+.hd-in{height:92px;position:relative;z-index:1}
+.logo img{height:clamp(44px,4.4vw,72px)}
+
+/* cautare cu buton propriu */
+.srch input{height:48px;background:#fff;border:1.5px solid #D9E1EC;padding:0 188px 0 46px;
+  box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.srch input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(11,68,196,.1)}
+.s-ic{top:15px}
+.srch kbd{right:104px;top:14px}
+.s-btn{position:absolute;right:5px;top:5px;height:38px;padding:0 22px;border-radius:7px;
+  background:var(--blue);color:#fff;font-weight:700;font-size:14px;transition:.15s}
+.s-btn:hover{background:var(--blue-d)}
+.s-res{top:56px}
+
+/* actiuni: pictograme in pastile colorate */
+.act svg{width:19px;height:19px;color:var(--blue)}
+.act > svg{padding:0}
+.act{gap:9px;padding:6px 2px;border-radius:9px}
+.act.ph svg{color:var(--amber-d)}
+.act i{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3)}
+.act b{font-size:13.6px}
+.act.ph b{font-size:14.6px;letter-spacing:-.02em}
+.hd-div{height:30px;background:#DDE4EE}
+.b2b{padding:11px 18px;font-size:13.4px;border-radius:8px}
+
+@media(max-width:1180px){
+  .hd::before{display:none}
+  .srch input{padding-right:104px}
+  .srch kbd{display:none}
+}
+@media(max-width:820px){ .hd-in{height:auto} .s-btn{padding:0 14px} .srch input{padding-right:84px} }
