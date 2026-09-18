@@ -518,3 +518,48 @@ svg{width:100%;height:100%}
 .sl-img img{mix-blend-mode:normal;opacity:1;background:#fff;border-radius:16px;padding:14px;
   box-shadow:0 22px 50px -12px rgba(2,10,30,.55);max-height:290px}
 .slide .sl-txt.amber ~ .sl-img img{mix-blend-mode:normal;box-shadow:0 22px 50px -14px rgba(60,40,0,.4)}
+
+/* --- revenire la varianta initiala: panou oblic + zona foto albastra --- */
+.slide{grid-template-columns:1.05fr .95fr}
+.slide .sl-txt{background:linear-gradient(140deg,#071B47 0%,#0B44C4 88%);padding:42px 40px;
+  justify-content:center;position:relative;z-index:2}
+.slide .sl-txt::after{display:block;content:'';position:absolute;right:-70px;top:0;bottom:0;width:140px;
+  background:inherit;transform:skewX(-9deg)}
+.slide .sl-txt.amber{background:linear-gradient(140deg,#FFD429 0%,#FFB800 90%)}
+.sl-img{position:static;width:auto;padding:26px;pointer-events:auto;z-index:1;
+  background:radial-gradient(circle at 60% 45%,#123a86,#071B47 70%)}
+.slide .sl-txt.amber + .sl-img{background:radial-gradient(circle at 60% 45%,#2a3140,#10151C 72%)}
+.sl-img img{background:none;border-radius:0;padding:0;box-shadow:none;max-height:300px;
+  filter:drop-shadow(0 18px 34px rgba(0,0,0,.45));mix-blend-mode:normal}
+.slide p,.slide h2,.sl-btn,.sl-tag,.sl-note{max-width:400px}
+.slide h2{max-width:none}
+
+/* --- fundaluri diferite pentru reclamele noi, in acelasi stil --- */
+
+/* 4. raze de soare, ca in logo */
+.sl-txt.rays{
+  background:
+    conic-gradient(from 200deg at 12% 50%,
+      rgba(255,206,10,.16) 0deg, transparent 12deg,
+      rgba(255,206,10,.12) 24deg, transparent 36deg,
+      rgba(255,206,10,.16) 48deg, transparent 60deg,
+      rgba(255,206,10,.10) 72deg, transparent 84deg),
+    linear-gradient(135deg,#04122F 0%,#0A3AA8 70%,#0B44C4 100%) !important;
+}
+.sl-img.rays-img{background:radial-gradient(circle at 55% 50%,#0A3AA8,#04122F 72%)}
+
+/* 5. grila tehnica, ca o schema de montaj */
+.sl-txt.grid-bg{
+  background:
+    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px) 0 0/100% 34px,
+    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px) 0 0/34px 100%,
+    linear-gradient(120deg,#0A1B3D 0%,#123E9E 62%,#1B57D8 100%) !important;
+}
+.sl-txt.grid-bg::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg,var(--amber),transparent 70%)}
+.sl-img.grid-img{
+  background:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px) 0 0/100% 34px,
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px) 0 0/34px 100%,
+    radial-gradient(circle at 55% 50%,#123E9E,#0A1B3D 74%);
+}
