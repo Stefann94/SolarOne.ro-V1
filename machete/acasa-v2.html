@@ -85,6 +85,7 @@
 
   <div class="promo-top">
     <div class="banner" id="banner">
+      <div class="b-track" id="bTrack">
       <div class="slide on" data-i="0">
         <div class="sl-txt">
           <span class="sl-tag">Distribuitor oficial</span>
@@ -138,6 +139,8 @@
           <span class="sl-note">Reduceri de la 33 de bucăți</span>
         </div>
         <div class="sl-img grid-img"><img src="https://www.solarone.ro/image/catalog/output_images/panou-fotovoltaic-600w-aiko-aiko-a600-mah72mw-n-type-monocristalin.jpg" alt=""></div>
+      </div>
+
       </div>
 
       <button class="b-nav prev" id="bPrev">‹</button>
@@ -498,8 +501,10 @@ catPanel.querySelectorAll('.cp-item').forEach(b => {
 let bi = 0;
 const slides = document.querySelectorAll('#banner .slide');
 const dots = document.querySelectorAll('#bDots span');
+const track = document.getElementById('bTrack');
 const go = n => {
   bi = (n + slides.length) % slides.length;
+  track.style.transform = 'translateX(' + (-bi * 100) + '%)';
   slides.forEach((s, i) => s.classList.toggle('on', i === bi));
   dots.forEach((d, i) => d.classList.toggle('on', i === bi));
 };
