@@ -1181,3 +1181,9 @@ svg{width:100%;height:100%}
 .hb-cart{gap:12px;padding:0 16px 0 14px}
 .hb-ic{margin-right:2px}
 .hb-count{top:-6px;right:-9px;border-color:var(--blue)}
+
+/* --- Contact si Autentificare: fundal colorat, nu transparent --- */
+.hb-ghost{background:linear-gradient(180deg,#EEF3FD 0%,#E2EAF9 100%);border:1.5px solid #CBD9EF;
+  color:#123A78;box-shadow:0 1px 2px rgba(16,24,40,.05)}
+.hb-ghost svg{color:var(--blue)}
+.hb-ghost:hover{background:linear-gradient(180deg,#E3ECFC 0%,#D3E0F7 100%);border-color:#A9C2EA;color:var(--blue-d)}
