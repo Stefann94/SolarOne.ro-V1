@@ -638,3 +638,16 @@ svg{width:100%;height:100%}
 .sp-b2b span{color:#9DB0CF}
 .sp-b2b::after{color:var(--amber)}
 .sp-b2b:hover{box-shadow:0 16px 34px -14px rgba(6,22,49,.9)}
+
+/* --- contrast mai mare intre prima si a doua caseta --- */
+/* 1. albastru profund */
+.sp-cfg{background-image:
+  linear-gradient(135deg,#0A2B86 0%,#0C39AE 100%),
+  repeating-linear-gradient(115deg,rgba(255,255,255,.05) 0 1px,transparent 1px 15px) !important}
+.sp-cfg:hover{box-shadow:0 16px 34px -14px rgba(10,43,134,.8)}
+/* 2. albastru viu, clar mai deschis */
+.sp-dep{background:linear-gradient(135deg,#2E6BFF 0%,#4B8AFF 100%) !important}
+.sp-dep span{color:#DDE9FF}
+.sp-dep .sp-ic{background:rgba(255,255,255,.2);color:#fff}
+.sp-dep::after{color:#fff;opacity:.85}
+.sp-dep:hover{box-shadow:0 16px 34px -14px rgba(46,107,255,.75)}
