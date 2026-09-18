@@ -1208,3 +1208,7 @@ svg{width:100%;height:100%}
 /* --- fara indicatorul de scurtatura in bara de cautare --- */
 .srch kbd{display:none}
 .srch input{padding-right:120px}
+
+/* --- fara lupa in stanga campului de cautare --- */
+.s-ic{display:none}
+.srch input{padding-left:18px}
