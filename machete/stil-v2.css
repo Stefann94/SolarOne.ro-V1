@@ -1087,3 +1087,28 @@ svg{width:100%;height:100%}
 .cp-body::-webkit-scrollbar,.cp-list::-webkit-scrollbar{width:8px}
 .cp-body::-webkit-scrollbar-thumb,.cp-list::-webkit-scrollbar-thumb{background:#D7DFEA;border-radius:8px}
 .cp-body::-webkit-scrollbar-track,.cp-list::-webkit-scrollbar-track{background:transparent}
+
+/* =========================================================
+   PANOUL DE CATALOG: înălțime dată de categoria cea mai mare.
+   Toate panourile stau suprapuse în aceeași celulă de grilă,
+   deci containerul ia înălțimea celui mai înalt și rămâne fix,
+   fără bară de derulare.
+   ========================================================= */
+.cp-in{height:auto;min-height:0}
+.cp-list{overflow:visible}
+.cp-body{display:grid;grid-template-columns:1fr;height:auto;overflow:visible;
+  padding:clamp(16px,1.4vw,26px) clamp(18px,1.7vw,30px) clamp(18px,1.5vw,26px)}
+.cp-pane{grid-area:1/1;display:flex;flex-direction:column;visibility:hidden;opacity:0;
+  pointer-events:none;transition:opacity .14s}
+.cp-pane.on{visibility:visible;opacity:1;pointer-events:auto}
+.cp-prods{margin-top:auto}
+
+/* scalare pe ecran */
+.cp-in{grid-template-columns:clamp(250px,17vw,330px) 1fr}
+.cp-item{padding:clamp(8px,.62vw,12px) 12px;font-size:clamp(13px,.86vw,14.6px)}
+.cp-head h4{font-size:clamp(17px,1.15vw,21px)}
+.cp-k{font-size:clamp(12.8px,.88vw,14.4px)}
+.cp-subs a{font-size:clamp(11.8px,.8vw,13.2px)}
+.cp-p img{height:clamp(56px,4.4vw,76px)}
+.cp-pn{font-size:clamp(11.2px,.76vw,12.6px)}
+.cp-pp{font-size:clamp(12.8px,.9vw,14.6px)}
