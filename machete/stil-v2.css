@@ -1007,3 +1007,71 @@ svg{width:100%;height:100%}
   opacity:.92;height:112%;right:-2%;
 }
 .ad:hover .ad-bg{opacity:1}
+
+/* --- fara halou alb in spatele produselor din dale --- */
+.ad-bg{
+  opacity:.62;
+  filter:brightness(.72) contrast(1.06) saturate(.95);
+  -webkit-mask-image:radial-gradient(ellipse 52% 58% at 60% 50%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%);
+  mask-image:radial-gradient(ellipse 52% 58% at 60% 50%, #000 42%, rgba(0,0,0,.45) 68%, transparent 100%);
+}
+.ad:hover .ad-bg{opacity:.75;filter:brightness(.8) contrast(1.06)}
+/* valul se intinde si peste zona imaginii, ca albul sa nu mai straluceasca */
+.ad::after{background:linear-gradient(100deg, rgba(3,12,32,.94) 0%, rgba(3,12,32,.82) 46%, rgba(3,12,32,.55) 78%, rgba(3,12,32,.42) 100%)}
+.ad-3::after{background:linear-gradient(100deg, rgba(58,42,0,.88) 0%, rgba(74,54,0,.6) 48%, rgba(74,54,0,.3) 82%, rgba(74,54,0,.22) 100%)}
+.ad-3 .ad-bg{filter:brightness(.85) contrast(1.05);opacity:.7}
+
+/* =========================================================
+   DALE PROMOȚIONALE — trei stiluri distincte, produs vizibil
+   ========================================================= */
+.side-promo{height:400px;gap:10px}
+.pz{position:relative;display:grid;grid-template-columns:1fr 132px;overflow:hidden;
+  transition:box-shadow .2s, transform .2s}
+.pz:hover{box-shadow:0 14px 30px -14px rgba(3,16,43,.5)}
+.pz-l{padding:14px 10px 14px 18px;display:flex;flex-direction:column;justify-content:center;gap:5px;z-index:2}
+.pz-k{font-size:9.6px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.pz b{font-size:14.6px;line-height:1.26;font-weight:750;letter-spacing:-.015em}
+.pz-c{font-size:12px;font-weight:700;margin-top:2px}
+.pz-r{position:relative;display:flex;align-items:center;justify-content:center;padding:8px}
+.pz-one{max-height:88px;max-width:100%;width:auto;object-fit:contain;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.28))}
+
+/* ---- 1. Configurator: bleumarin, doua produse pe podium deschis ---- */
+.pz-cfg{background:linear-gradient(130deg,#071B44 0%,#0B3AAE 100%)}
+.pz-cfg .pz-k{color:var(--amber)}
+.pz-cfg b{color:#fff}
+.pz-cfg .pz-c{color:var(--amber)}
+.pz-cfg .pz-r{background:linear-gradient(180deg,#FFFFFF 0%,#EAF0FA 100%);
+  clip-path:polygon(14% 0, 100% 0, 100% 100%, 0 100%)}
+.pz-duo{display:flex;align-items:center;gap:2px;padding-left:10px}
+.pz-duo img{max-height:64px;width:auto;object-fit:contain}
+.pz-plus{font-size:15px;font-weight:800;color:var(--blue);opacity:.65}
+
+/* ---- 2. Stoc: fundal deschis, produs mare, chipuri de marca ---- */
+.pz-stoc{background:linear-gradient(120deg,#EEF3FB 0%,#DCE7F7 100%);border-left:3px solid var(--ok)}
+.pz-stoc .pz-k{color:var(--ok)}
+.pz-stoc b{color:var(--ink);font-size:14px}
+.pz-brands{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.pz-brands span{font-size:9.6px;font-weight:700;color:#3A4C61;background:rgba(255,255,255,.85);
+  border:1px solid #CBD8EA;padding:2px 7px;border-radius:20px}
+.pz-stoc .pz-one{filter:drop-shadow(0 6px 14px rgba(16,24,40,.18))}
+.pz-badge{position:absolute;right:8px;bottom:8px;font-size:9.4px;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;color:#fff;background:var(--ok);padding:3px 8px;border-radius:20px}
+
+/* ---- 3. B2B: auriu, produs decupat, comparatie de pret ---- */
+.pz-b2b{background:linear-gradient(120deg,#FFC800 0%,#FFE06B 100%)}
+.pz-b2b::before{content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(115deg, rgba(0,0,0,.05) 0 2px, transparent 2px 18px)}
+.pz-b2b .pz-k{color:#6B5100}
+.pz-b2b b{color:#2A2100}
+.pz-price{display:flex;align-items:baseline;gap:8px;margin-top:3px}
+.pz-price s{font-size:11.5px;color:#7A6200}
+.pz-price strong{font-size:17px;font-weight:850;color:#1B1500;letter-spacing:-.03em}
+.pz-b2b .pz-r{background:rgba(255,255,255,.5);clip-path:polygon(16% 0, 100% 0, 100% 100%, 0 100%)}
+.pz-b2b .pz-one{filter:drop-shadow(0 8px 16px rgba(90,70,0,.28))}
+
+@media(max-width:1180px){
+  .side-promo{height:auto;grid-template-rows:none;grid-template-columns:repeat(3,1fr)}
+  .pz{grid-template-columns:1fr;height:auto}
+  .pz-r{display:none}
+}
