@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir="{{ direction }}" lang="{{ lang }}">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<base href="{{ base }}" />
+{% if description %}<meta name="description" content="{{ description }}" />{% endif %}
+{% if keywords %}<meta name="keywords" content="{{ keywords }}" />{% endif %}
+
+{# Fonturi #}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+{# TEMPORAR: Bootstrap si Font Awesome raman pana rescriem toate sabloanele.
+   Se elimina cand categoria, produsul si cosul au sabloane proprii. #}
+<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js"></script>
+<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js"></script>
+<link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+{# Foaia de stil a temei SolarOne #}
+<link href="catalog/view/theme/solarone/stylesheet/solarone.css" rel="stylesheet">
+
+{% for style in styles %}<link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />{% endfor %}
+{% for script in scripts %}<script src="{{ script }}"></script>{% endfor %}
+<script src="catalog/view/javascript/common.js"></script>
+{% for link in links %}<link href="{{ link.href }}" rel="{{ link.rel }}" />{% endfor %}
+{% for analytic in analytics %}{{ analytic }}{% endfor %}
+</head>
+<body>
+
+{# ------------------------- BARA UTILITARA ------------------------- #}
+<div class="so-topbar"><div class="so-wrap">
+  <span>📞 <b>{{ telephone }}</b> <span class="so-hide-m">· Luni–Vineri 08:00–18:00</span></span>
+  <span class="so-hide-m">🚚 Livrare din 9 depozite</span>
+  <span class="so-sep"></span>
+  <a class="so-hide-m" href="{{ order }}">Urmărire comandă</a>
+  <a href="{{ contact }}">Contact</a>
+</div></div>
+
+{# ------------------------- ANTET ------------------------- #}
+<header class="so-header"><div class="so-wrap so-head">
+
+  <a class="so-logo" href="{{ home }}">
+    {% if logo %}<img src="{{ logo }}" alt="{{ name }}" title="{{ name }}" />{% else %}<strong>{{ name }}</strong>{% endif %}
+  </a>
+
+  {{ search }}
+
+  <div class="so-actions">
+    <a class="so-act" href="{{ account }}">
+      <span class="so-circ">👤</span>
+      <span><span class="k">{% if logged %}Contul meu{% else %}Cont{% endif %}</span><span class="v">{% if logged %}Deschide{% else %}Intră{% endif %}</span></span>
+    </a>
+    <div class="so-act">{{ cart }}</div>
+    <a class="so-b2b" href="{{ register }}">Preț instalatori</a>
+  </div>
+
+</div></header>
+
+{{ menu }}
+
+<div class="so-main">

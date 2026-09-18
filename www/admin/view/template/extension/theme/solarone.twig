@@ -1,0 +1,71 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-theme" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_back }}" class="btn btn-default"><i class="fa fa-reply"></i></a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>{% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3></div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-theme" class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_directory }}</label>
+            <div class="col-sm-10"><input type="text" name="theme_solarone_directory" value="{{ theme_solarone_directory }}" class="form-control" readonly/></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_status }}</label>
+            <div class="col-sm-10">
+              <select name="theme_solarone_status" class="form-control">
+                {% if theme_solarone_status %}
+                <option value="1" selected>Enabled</option><option value="0">Disabled</option>
+                {% else %}
+                <option value="1">Enabled</option><option value="0" selected>Disabled</option>
+                {% endif %}
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Produse pe pagină</label>
+            <div class="col-sm-10"><input type="text" name="theme_solarone_product_limit" value="{{ theme_solarone_product_limit }}" class="form-control"/></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Imagine produs (listă)</label>
+            <div class="col-sm-5"><input type="text" name="theme_solarone_image_product_width" value="{{ theme_solarone_image_product_width }}" class="form-control"/></div>
+            <div class="col-sm-5"><input type="text" name="theme_solarone_image_product_height" value="{{ theme_solarone_image_product_height }}" class="form-control"/></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Imagine produs (fișă)</label>
+            <div class="col-sm-5"><input type="text" name="theme_solarone_image_thumb_width" value="{{ theme_solarone_image_thumb_width }}" class="form-control"/></div>
+            <div class="col-sm-5"><input type="text" name="theme_solarone_image_thumb_height" value="{{ theme_solarone_image_thumb_height }}" class="form-control"/></div>
+          </div>
+          {# restul dimensiunilor raman ascunse, cu valorile setate #}
+          {% for k, v in {
+            'theme_solarone_image_popup_width': theme_solarone_image_popup_width,
+            'theme_solarone_image_popup_height': theme_solarone_image_popup_height,
+            'theme_solarone_image_category_width': theme_solarone_image_category_width,
+            'theme_solarone_image_category_height': theme_solarone_image_category_height,
+            'theme_solarone_image_additional_width': theme_solarone_image_additional_width,
+            'theme_solarone_image_additional_height': theme_solarone_image_additional_height,
+            'theme_solarone_image_related_width': theme_solarone_image_related_width,
+            'theme_solarone_image_related_height': theme_solarone_image_related_height,
+            'theme_solarone_image_compare_width': theme_solarone_image_compare_width,
+            'theme_solarone_image_compare_height': theme_solarone_image_compare_height,
+            'theme_solarone_image_wishlist_width': theme_solarone_image_wishlist_width,
+            'theme_solarone_image_wishlist_height': theme_solarone_image_wishlist_height,
+            'theme_solarone_image_location_width': theme_solarone_image_location_width,
+            'theme_solarone_image_location_height': theme_solarone_image_location_height,
+            'theme_solarone_product_description_length': theme_solarone_product_description_length
+          } %}<input type="hidden" name="{{ k }}" value="{{ v }}"/>{% endfor %}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}

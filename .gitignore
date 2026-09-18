@@ -1,20 +1,51 @@
-# Fișierele OpenCart de bază nu se versionează — se descarcă oricând
-www/
-docker/oc.zip
-docker/tmp/
+# OpenCart de bază nu se versionează — se descarcă oricând de pe site-ul oficial.
+# Excepție: tema noastră și fișierele proprii de administrare.
+www/*
+!www/catalog/
+www/catalog/*
+!www/catalog/view/
+www/catalog/view/*
+!www/catalog/view/theme/
+www/catalog/view/theme/*
+!www/catalog/view/theme/solarone/
+!www/admin/
+www/admin/*
+!www/admin/controller/
+www/admin/controller/*
+!www/admin/controller/extension/
+www/admin/controller/extension/*
+!www/admin/controller/extension/theme/
+www/admin/controller/extension/theme/*
+!www/admin/controller/extension/theme/solarone.php
+!www/admin/language/
+www/admin/language/*
+!www/admin/language/en-gb/
+www/admin/language/en-gb/*
+!www/admin/language/en-gb/extension/
+www/admin/language/en-gb/extension/*
+!www/admin/language/en-gb/extension/theme/
+www/admin/language/en-gb/extension/theme/*
+!www/admin/language/en-gb/extension/theme/solarone.php
+!www/admin/view/
+www/admin/view/*
+!www/admin/view/template/
+www/admin/view/template/*
+!www/admin/view/template/extension/
+www/admin/view/template/extension/*
+!www/admin/view/template/extension/theme/
+www/admin/view/template/extension/theme/*
+!www/admin/view/template/extension/theme/solarone.twig
 
 # Configurații locale cu parole
 www/config.php
 www/admin/config.php
 
-# Exporturi de bază de date (pot conține date comerciale)
+# Exporturi de bază de date
+db/*.sql
 db/init/*.sql
-db/init/*.zip
-*.sql
 *.sql.zip
 
 # Sistem
 Thumbs.db
 desktop.ini
-.DS_Store
 node_modules/

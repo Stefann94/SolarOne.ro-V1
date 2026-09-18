@@ -1,0 +1,19 @@
+{% if categories %}
+<nav class="so-nav"><div class="so-wrap">
+  <ul>
+    {% for category in categories %}
+    <li>
+      <a href="{{ category.href }}">{{ category.name }}</a>
+      {% if category.children %}
+      <ul class="so-sub">
+        {% for child in category.children %}
+        <li><a href="{{ child.href }}">{{ child.name }}</a></li>
+        {% endfor %}
+        <li><a href="{{ category.href }}"><strong>{{ text_all }} {{ category.name }} →</strong></a></li>
+      </ul>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</div></nav>
+{% endif %}

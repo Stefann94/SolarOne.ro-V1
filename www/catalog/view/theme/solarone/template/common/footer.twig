@@ -1,0 +1,53 @@
+</div>{# .so-main deschis in header #}
+
+<footer class="so-footer"><div class="so-wrap">
+  <div class="so-f-grid">
+
+    <div>
+      <h4>SolarOne — distribuitor echipamente fotovoltaice</h4>
+      <p>Marcă operată de AVO GRUP INVEST SRL.<br>
+      Str. Nordului 8A, Piatra Neamț, jud. Neamț.<br>
+      Distribuitor Deye, Huawei, Growatt, Aiko, Pytes, Felicity.</p>
+      <p style="margin-top:10px">📞 <strong style="color:#fff">{{ telephone }}</strong></p>
+    </div>
+
+    <div>
+      <h4>{{ text_information }}</h4>
+      <ul>
+        {% for information in informations %}
+        <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div>
+      <h4>Pentru profesioniști</h4>
+      <ul>
+        <li><a href="{{ register }}">Program B2B</a></li>
+        <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
+        <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
+        <li><a href="{{ special }}">{{ text_special }}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>{{ text_service }}</h4>
+      <ul>
+        <li><a href="{{ contact }}">{{ text_contact }}</a></li>
+        <li><a href="{{ return }}">{{ text_return }}</a></li>
+        <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
+        <li><a href="{{ account }}">{{ text_account }}</a></li>
+        <li><a href="{{ order }}">{{ text_order }}</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="so-f-bot">
+    <span>© 2026 SolarOne · AVO GRUP INVEST SRL</span>
+    <span class="so-f-deps">Piatra Neamț · Iași · București · Cluj · Craiova · Constanța · Focșani · Timișoara · Brașov</span>
+  </div>
+</div></footer>
+
+{{ script }}
+</body></html>
