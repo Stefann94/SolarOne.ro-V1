@@ -1,0 +1,20 @@
+# Fișierele OpenCart de bază nu se versionează — se descarcă oricând
+www/
+docker/oc.zip
+docker/tmp/
+
+# Configurații locale cu parole
+www/config.php
+www/admin/config.php
+
+# Exporturi de bază de date (pot conține date comerciale)
+db/init/*.sql
+db/init/*.zip
+*.sql
+*.sql.zip
+
+# Sistem
+Thumbs.db
+desktop.ini
+.DS_Store
+node_modules/

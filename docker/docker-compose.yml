@@ -1,0 +1,66 @@
+# Mediul local SolarOne - complet izolat de orice alt proiect.
+# Pornire:  docker compose up -d
+# Oprire:   docker compose down
+name: solarone-local
+
+services:
+
+  # ---------------------------------------------------------------
+  # SITE-UL: PHP 7.4 + Apache. Construit din Dockerfile-ul alaturat.
+  # ---------------------------------------------------------------
+  web:
+    build: .
+    container_name: solarone-web
+    restart: unless-stopped
+    ports:
+      - "8091:80"                 # http://localhost:8091
+    volumes:
+      - ../www:/var/www/html      # fisierele site-ului = folderul www de pe PC
+      - ./php.ini:/usr/local/etc/php/conf.d/99-solarone.ini:ro
+    depends_on:
+      - db
+    networks: [solarone]
+
+  # ---------------------------------------------------------------
+  # BAZA DE DATE. Fara port expus in exterior: o acceseaza doar
+  # containerele din aceasta retea, plus phpMyAdmin.
+  # ---------------------------------------------------------------
+  db:
+    image: mariadb:10.6
+    container_name: solarone-db
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: solarone
+      MARIADB_USER: solarone
+      MARIADB_PASSWORD: solarone
+      MARIADB_ROOT_PASSWORD: root
+    command: --max_allowed_packet=256M --innodb-buffer-pool-size=512M
+    volumes:
+      - db-data:/var/lib/mysql     # datele raman aici, chiar daca stergi containerul
+      - ../db/init:/docker-entrypoint-initdb.d:ro   # fisierele .sql de aici se importa la prima pornire
+    networks: [solarone]
+
+  # ---------------------------------------------------------------
+  # phpMyAdmin - ca la Hostico, dar pentru baza locala.
+  # ---------------------------------------------------------------
+  pma:
+    image: phpmyadmin:5
+    container_name: solarone-pma
+    restart: unless-stopped
+    ports:
+      - "8092:80"                 # http://localhost:8092
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+      UPLOAD_LIMIT: 512M
+    depends_on:
+      - db
+    networks: [solarone]
+
+volumes:
+  db-data:
+
+networks:
+  solarone:
+    name: solarone-local
