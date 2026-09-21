@@ -593,3 +593,30 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
 /* --- cardurile de depozit: sub mouse rămâne doar bordura, fără umplere --- */
 .dep:hover{background:var(--w)}
 .dep-cta,.dep-cta:hover{background:var(--blue-s)}
+
+
+/* =========================================================
+   CARDURILE DE DEPOZIT: linia care crește dedesubt
+   Sub mouse, o linie albastră de 3px se întinde de la stânga la
+   dreapta pe marginea de jos. Bordura rămâne gri, fără umplere și
+   fără inel — deci nimic nu se mișcă din loc.
+   Linia e un fundal, nu un element, ca să nu ocupe spațiu.
+   ========================================================= */
+.dep{
+  background-image:linear-gradient(var(--linie-albastra),var(--linie-albastra));
+  background-repeat:no-repeat;
+  background-position:left bottom;
+  background-size:0 3px;
+  transition:background-size .22s ease;
+}
+.dep:hover{
+  background-size:100% 3px;
+  border-color:var(--line);
+  box-shadow:none;
+}
+/* fundalul se pune pe culoare, nu prin scurtătura „background",
+   care ar șterge linia */
+.dep,.dep:hover{background-color:var(--w)}
+.dep-cta,.dep-cta:hover{background-color:var(--blue-s)}
+
+@media(prefers-reduced-motion:reduce){ .dep{transition:none} }
