@@ -1616,3 +1616,7 @@ svg{width:100%;height:100%}
 /* --- revenire la pozitiile anterioare; doar statia de incarcare ramane mutata --- */
 .ad-deye .ad2-img{right:6%;bottom:-2%;width:auto;height:74%}
 .ad-acum .ad2-img{right:4%;bottom:12%;width:62%;height:auto}
+
+/* --- logourile Huawei si Canadian Solar, la aceeasi greutate vizuala ca Deye --- */
+.ad-acum .ad2-brand{max-height:38px;max-width:38px}
+.ad-panouri .ad2-brand{max-height:32px;max-width:120px}

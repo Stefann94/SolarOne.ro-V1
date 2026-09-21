@@ -15,22 +15,5 @@
         }
       ]
     }
-  ],
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/site/",
-      "permanent": false
-    },
-    {
-      "source": "/categorie",
-      "destination": "/site/categorie",
-      "permanent": false
-    },
-    {
-      "source": "/produs",
-      "destination": "/site/produs",
-      "permanent": false
-    }
   ]
 }
