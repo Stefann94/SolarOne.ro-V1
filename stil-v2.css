@@ -1627,7 +1627,7 @@ svg{width:100%;height:100%}
 .ad-panouri{
   background:
     radial-gradient(90% 70% at 88% 6%, rgba(255,255,255,.42) 0%, rgba(255,255,255,0) 60%),
-    linear-gradient(42deg, #FFF7E6 0%, #FFE08A 34%, #FFC23C 64%, #F58B12 100%);
+    linear-gradient(42deg, #F0FAFC 0%, #C6E9F2 32%, #8BD2E6 64%, #369CC4 100%);
 }
 .ad-montaj{
   background:
@@ -1640,3 +1640,12 @@ svg{width:100%;height:100%}
 .ad-panouri .ad2-k.light{color:#0A3577}
 .ad-montaj .ad2-k.light{color:#0B4A6B}
 .ad-panouri .ad2-sub.dark,.ad-montaj .ad2-sub.dark{color:#3F4E5F}
+
+/* --- fanionul diagonal: textul centrat perfect pe banda --- */
+.ad2-flag{
+  top:20px;right:-36px;
+  padding:7px 38px;
+  line-height:1;
+  display:block;
+  text-align:center;
+}
