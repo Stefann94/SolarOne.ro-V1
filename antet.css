@@ -484,3 +484,12 @@
 .hd::before{display:none}
 .srch input{font-size:clamp(12.4px, .92vw, 14.6px)}
 .srch input::placeholder{font-size:clamp(12px, .88vw, 14.2px)}
+/* =========================================================
+   BARA DE NAVIGARE RĂMÂNE VIZIBILĂ LA DERULARE
+   Antetul nu e fix (are position:relative pentru aura logoului),
+   deci bara se oprește chiar la marginea de sus a ecranului.
+   ========================================================= */
+.nav{position:sticky;top:0;z-index:150}
+.cat-panel{z-index:160}
+/* si pe ecrane mici bara ramane sus, cu derulare pe orizontala */
+@media(max-width:820px){ .nav{position:sticky;top:0} }
