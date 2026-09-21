@@ -1977,3 +1977,19 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
   background:#DCE6FB url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B44C4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z'/><circle cx='12' cy='10' r='2.6'/></svg>") center/16px no-repeat;
   border-color:#C7D8F7;
 }
+
+
+/* --- pictograma de locație în stilul barei de navigare: contur gros,
+       colțuri rotunjite. Sub mouse rămâne neschimbată. --- */
+.dep::before,.dep:hover::before{
+  background:#EAF0FF url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B44C4' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 21.2 5.8 13.2a7 7 0 1 1 12.4 0z'/><circle cx='12' cy='9.8' r='2.5'/></svg>") center/17px no-repeat;
+  border:1px solid #DCE5F8;
+}
+.dep-sediu::before,.dep-sediu:hover::before{
+  background:#FFF6D6 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A87C00' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 21.2 5.8 13.2a7 7 0 1 1 12.4 0z'/><circle cx='12' cy='9.8' r='2.5'/></svg>") center/17px no-repeat;
+  border-color:#F0DE9E;
+}
+.dep-cta::before,.dep-cta:hover::before{
+  background:#DCE6FB url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B44C4' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 21.2 5.8 13.2a7 7 0 1 1 12.4 0z'/><circle cx='12' cy='9.8' r='2.5'/></svg>") center/17px no-repeat;
+  border-color:#C7D8F7;
+}
