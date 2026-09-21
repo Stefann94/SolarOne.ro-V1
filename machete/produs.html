@@ -9,7 +9,7 @@
   <a class="hlogo" href="acasa-v2.html"><img src="https://www.solarone.ro/image/catalog/Solar%20One-%20Sisteme%20Fotovoltaice%20Logo.png" alt="SolarOne"></a>
 
   <div class="srch">
-    <input id="q" autocomplete="off" placeholder="Caută model, marcă sau categorie — ex. SUN-12K, LUNA2000, invertor hibrid 10 kW">
+    <input id="q" autocomplete="off" placeholder="Caută invertoare, panouri fotovoltaice, acumulatori sau sisteme de montaj">
     <button class="s-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Caută</button>
     <div class="s-res" id="res"></div>
   </div>
@@ -248,11 +248,11 @@ const imgUrl = (p,s) => BASE + '/image/' + String(p||'');
 
 /* ---- textul din cautare se potriveste pe latimea disponibila ---- */
 const VARIANTE = [
-  "Caută model, marcă sau categorie — ex. SUN-12K, LUNA2000, invertor hibrid 10 kW",
-  "Caută model, marcă sau categorie — ex. SUN-12K, LUNA2000",
-  "Caută model, marcă sau categorie — ex. SUN-12K",
-  "Caută model, marcă sau categorie",
-  "Caută produse, ex. SUN-12K",
+  "Caută invertoare, panouri fotovoltaice, acumulatori sau sisteme de montaj",
+  "Caută invertoare, panouri fotovoltaice sau acumulatori",
+  "Caută invertoare, panouri sau acumulatori",
+  "Caută invertoare, panouri, acumulatori",
+  "Caută invertoare sau panouri",
   "Caută produse"
 ];
 function potrivesteTextul(){
