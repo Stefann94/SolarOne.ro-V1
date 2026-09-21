@@ -475,3 +475,7 @@
 .nav-l > li > a::after{height:4px !important;transition:none !important;transform:none !important;
   left:0 !important;right:0 !important;opacity:0}
 .nav-l > li:hover > a::after{opacity:1}
+.hd-in{gap:20px}
+.hlogo{flex:0 0 auto;justify-content:center;margin-left:0;
+  margin-right:calc(max((100vw - var(--col)) / 2, 0px) + var(--pad) - 20px)}
+.hd::before{display:none}

@@ -1274,3 +1274,21 @@ svg{width:100%;height:100%}
 .nav-l > li > a::after{height:4px !important;transition:none !important;transform:none !important;
   left:0 !important;right:0 !important;opacity:0}
 .nav-l > li:hover > a::after{opacity:1}
+
+/* =========================================================
+   LOGO CENTRAT ÎNTRE MARGINEA ECRANULUI ȘI BARA DE CĂUTARE
+   Conținutul stă într-o coloană centrată, deci între marginea
+   ecranului și începutul coloanei există un decalaj:
+        L = (100vw − lățime coloană) / 2 + marginea interioară
+   Dacă spațiul dintre logo și căutare este tot L, atunci:
+        centrul logoului   = L + X/2
+        jumătatea distanței = (L + X + L) / 2 = L + X/2
+   Cele două coincid pentru orice lățime a logoului. Deci formula
+   rămâne valabilă pe orice ecran, fără valori fixe.
+   ========================================================= */
+.hd-in{gap:20px}
+.logo{flex:0 0 auto;justify-content:center;margin-left:0;
+  margin-right:calc(max((100vw - var(--col)) / 2, 0px) + var(--pad) - 20px)}
+
+/* fără aura galbenă din spatele logoului */
+.hd::before{display:none}
