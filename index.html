@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Machete interfață — SolarOne (document intern)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#0B44C4;--blue-d:#062E8C;--amber:#FFCE0A;--ink:#10151C;--ink2:#47535F;--ink3:#7D8A97;
+        --line:#E5EAF0;--bg:#F7F9FC;--w:#fff;--r:14px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--ink);
+       font-size:15px;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+  .warn{background:#FFF4CC;border-bottom:2px solid var(--amber);padding:10px 0;font-size:13px;color:#5B4600}
+  .warn b{color:#3A2D00}
+
+  header{background:linear-gradient(135deg,#061A44 0%,#0B44C4 100%);color:#fff;padding:44px 0 40px}
+  header .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--amber);background:rgba(255,206,10,.14);border:1px solid rgba(255,206,10,.35);
+    padding:5px 12px;border-radius:20px;margin-bottom:14px}
+  header h1{font-size:32px;line-height:1.15;letter-spacing:-.025em;margin-bottom:10px}
+  header p{color:#C3D3F2;max-width:620px;font-size:15.5px}
+
+  .sec{padding:38px 0}
+  .sec h2{font-size:19px;margin-bottom:4px;letter-spacing:-.02em}
+  .sec .lead{color:var(--ink3);font-size:14px;margin-bottom:20px}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:var(--w);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+    display:flex;flex-direction:column;transition:.18s}
+  .card:hover{border-color:var(--blue);box-shadow:0 14px 34px -16px rgba(16,24,40,.3);transform:translateY(-3px)}
+  .card .top{height:8px;background:linear-gradient(90deg,var(--blue),var(--amber))}
+  .card .b{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .card b{font-size:16.5px;letter-spacing:-.015em}
+  .card p{font-size:13.2px;color:var(--ink2);flex:1}
+  .card .go{margin-top:8px;font-size:13px;font-weight:700;color:var(--blue)}
+  .card.old{opacity:.72}
+  .card.old .top{background:#CBD5E1}
+
+  .note{background:var(--w);border:1px solid var(--line);border-left:4px solid var(--blue);
+    border-radius:10px;padding:16px 20px;margin-top:22px}
+  .note h3{font-size:14.5px;margin-bottom:6px}
+  .note ul{margin:6px 0 0 18px;font-size:13.4px;color:var(--ink2)}
+  .note li{margin:3px 0}
+
+  footer{border-top:1px solid var(--line);padding:22px 0 40px;font-size:12.6px;color:var(--ink3)}
+  @media(max-width:860px){ .grid{grid-template-columns:1fr} header h1{font-size:25px} }
+</style>
+</head>
+<body>
+
+<div class="warn"><div class="wrap">
+  ⚠️ <b>Document intern de lucru.</b> Acestea sunt machete de interfață, nu site-ul SolarOne.
+  Site-ul oficial este <b>www.solarone.ro</b>. Prețurile și produsele afișate aici sunt exemple, preluate la o dată fixă.
+</div></div>
+
+<header><div class="wrap">
+  <span class="tag">Proiect interfață · 2026</span>
+  <h1>Machete pentru noua interfață SolarOne</h1>
+  <p>Propuneri de design pentru magazinul solarone.ro, construite peste catalogul real: 397 de produse active, 10 categorii, 26 de mărci. Deschide oricare machetă și încearcă elementele interactive.</p>
+</div></header>
+
+<section class="sec"><div class="wrap">
+  <h2>Machete disponibile</h2>
+  <p class="lead">Varianta 2 este cea actuală, în lucru. Celelalte rămân ca referință.</p>
+
+  <div class="grid">
+    <a class="card" href="/machete/acasa-v2.html">
+      <span class="top"></span>
+      <span class="b">
+        <b>Prima pagină — v2</b>
+        <p>Antet nou, bară de navigare cu panou de catalog, carusel cu 5 reclame, dale promoționale și produse.</p>
+        <span class="go">Deschide macheta →</span>
+      </span>
+    </a>
+
+    <a class="card old" href="/machete/categorie.html">
+      <span class="top"></span>
+      <span class="b">
+        <b>Pagina de categorie</b>
+        <p>Invertoare, cu filtre tehnice în stânga și text explicativ sub produse. Versiune preliminară.</p>
+        <span class="go">Deschide macheta →</span>
+      </span>
+    </a>
+
+    <a class="card old" href="/machete/produs.html">
+      <span class="top"></span>
+      <span class="b">
+        <b>Fișă de produs</b>
+        <p>Preț cu și fără TVA, stoc pe depozite, compatibilități verificate, documentație. Versiune preliminară.</p>
+        <span class="go">Deschide macheta →</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="note">
+    <h3>De încercat în prima pagină</h3>
+    <ul>
+      <li><b>Căutarea</b> — scrie <code>SUN-12K</code>, <code>LUNA</code> sau <code>pytes</code>: caută instantaneu în toate cele 397 de produse.</li>
+      <li><b>Butonul „Catalog”</b> — deschide panoul cu toate categoriile, subcategoriile și produsele reprezentative.</li>
+      <li><b>Comutatorul „cu TVA / fără TVA”</b> — schimbă toate prețurile din pagină, pentru clienți finali și pentru firme.</li>
+      <li><b>Caruselul</b> — cinci reclame care alunecă lateral, cu săgeți și puncte.</li>
+    </ul>
+  </div>
+
+  <div class="note" style="border-left-color:var(--amber)">
+    <h3>Ce nu sunt aceste machete</h3>
+    <ul>
+      <li>Nu sunt site funcțional: coșul, contul și plata nu funcționează.</li>
+      <li>Datele sunt o copie a catalogului, la o dată fixă. Prețurile reale sunt pe solarone.ro.</li>
+      <li>Pagina este blocată pentru motoarele de căutare, ca să nu apară în Google.</li>
+    </ul>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  SolarOne — AVO GRUP INVEST SRL · machete de interfață, uz intern
+</div></footer>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Acesta este mediul de prezentare a machetelor SolarOne.
+# NU este site-ul public. Nu trebuie indexat de motoarele de căutare,
+# ca să nu apară conținut duplicat față de www.solarone.ro
+User-agent: *
+Disallow: /
