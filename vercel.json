@@ -5,19 +5,19 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/machete/acasa-v2.html"
+      "destination": "/machete/acasa-v2"
     },
     {
       "source": "/info",
-      "destination": "/info.html"
+      "destination": "/info"
     },
     {
       "source": "/categorie",
-      "destination": "/machete/categorie.html"
+      "destination": "/machete/categorie"
     },
     {
       "source": "/produs",
-      "destination": "/machete/produs.html"
+      "destination": "/machete/produs"
     }
   ],
   "headers": [
