@@ -2043,21 +2043,19 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
    fără inel — deci nimic nu se mișcă din loc.
    Linia e un fundal, nu un element, ca să nu ocupe spațiu.
    ========================================================= */
-.dep{
+/* Linia se declară și pe starea de hover, nu doar pe cea normală:
+   două reguli mai vechi folosesc scurtătura „background" pe :hover, iar
+   aceasta șterge imaginea de fundal. Fiind mai specifice decât „.dep",
+   ele câștigau și linia nu mai avea ce desena. */
+.dep,.dep:hover{
+  background-color:var(--w);
   background-image:linear-gradient(var(--linie-albastra),var(--linie-albastra));
   background-repeat:no-repeat;
   background-position:left bottom;
-  background-size:0% 3px;
   transition:none;
 }
-.dep:hover{
-  background-size:100% 3px;
-  border-color:var(--line);
-  box-shadow:none;
-}
-/* fundalul se pune pe culoare, nu prin scurtătura „background",
-   care ar șterge linia */
-.dep,.dep:hover{background-color:var(--w)}
+.dep{background-size:0% 3px}
+.dep:hover{background-size:100% 3px;border-color:var(--line);box-shadow:none}
 .dep-cta,.dep-cta:hover{background-color:var(--blue-s)}
 
 
