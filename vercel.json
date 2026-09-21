@@ -20,22 +20,17 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/machete/acasa-v2",
+      "destination": "/site/",
       "permanent": false
     },
     {
       "source": "/categorie",
-      "destination": "/machete/categorie",
+      "destination": "/site/categorie",
       "permanent": false
     },
     {
       "source": "/produs",
-      "destination": "/machete/produs",
-      "permanent": false
-    },
-    {
-      "source": "/info",
-      "destination": "/info.html",
+      "destination": "/site/produs",
       "permanent": false
     }
   ]
