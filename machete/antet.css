@@ -482,3 +482,5 @@
 .hd-in{gap:26px}
 .hlogo{flex:0 0 auto;justify-content:flex-start;margin-left:-4px;margin-right:0}
 .hd::before{display:none}
+.srch input{font-size:clamp(12.4px, .92vw, 14.6px)}
+.srch input::placeholder{font-size:clamp(12px, .88vw, 14.2px)}

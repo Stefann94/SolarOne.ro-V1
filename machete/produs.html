@@ -246,6 +246,29 @@ const BASE = "https://www.solarone.ro";
 const lei = n => n.toLocaleString('ro-RO',{minimumFractionDigits:2,maximumFractionDigits:2});
 const imgUrl = (p,s) => BASE + '/image/' + String(p||'');
 
+/* ---- textul din cautare se potriveste pe latimea disponibila ---- */
+const VARIANTE = [
+  "Caută model, marcă sau categorie — ex. SUN-12K, LUNA2000, invertor hibrid 10 kW",
+  "Caută model, marcă sau categorie — ex. SUN-12K, LUNA2000",
+  "Caută model, marcă sau categorie — ex. SUN-12K",
+  "Caută model, marcă sau categorie",
+  "Caută produse, ex. SUN-12K",
+  "Caută produse"
+];
+function potrivesteTextul(){
+  const inp = document.getElementById("q"); if(!inp) return;
+  const st = getComputedStyle(inp);
+  const c = potrivesteTextul._c || (potrivesteTextul._c = document.createElement("canvas").getContext("2d"));
+  c.font = st.fontWeight + " " + st.fontSize + " " + st.fontFamily;
+  const buton = document.querySelector(".s-btn");
+  const spatiu = inp.clientWidth - parseFloat(st.paddingLeft) - (buton ? buton.offsetWidth + 16 : 0) - 10;
+  const ales = VARIANTE.find(v => c.measureText(v).width <= spatiu);
+  inp.placeholder = ales || VARIANTE[VARIANTE.length - 1];
+}
+potrivesteTextul();
+window.addEventListener("resize", potrivesteTextul);
+document.fonts && document.fonts.ready.then(potrivesteTextul);
+
 
 /* ---- comutator TVA ---- */
 let cuTVA = true;

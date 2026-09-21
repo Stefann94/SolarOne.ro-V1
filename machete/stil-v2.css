@@ -1564,3 +1564,7 @@ svg{width:100%;height:100%}
 .ad-acum .ad2-img{right:4%;bottom:14%;width:86%;height:auto}
 .ad-montaj .ad2-img{right:-2%;bottom:10%;width:82%;height:auto;filter:drop-shadow(0 12px 22px rgba(16,24,40,.2))}
 .ad-incarcare .ad2-img{right:7%;bottom:-2%;width:auto;height:72%}
+
+/* --- textul din bara de cautare se micsoreaza odata cu ecranul --- */
+.srch input{font-size:clamp(12.4px, .92vw, 14.6px)}
+.srch input::placeholder{font-size:clamp(12px, .88vw, 14.2px)}
