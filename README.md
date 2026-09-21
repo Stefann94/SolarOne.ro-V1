@@ -41,7 +41,7 @@ Solarone.ro/
 ├── www/         fișierele site-ului — se editează direct de aici
 ├── db/init/     fișiere .sql importate automat la PRIMA pornire
 ├── tema/        tema nouă (repository Git separat)
-└── machete/     machetele vizuale, de deschis în browser
+└── site/        SITE-UL — deschide site/index.html în browser
 ```
 
 Folderul `www` de pe calculator **este** folderul site-ului din container. Orice modificare se vede instant în browser, fără repornire.
