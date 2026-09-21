@@ -588,3 +588,8 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
 .grid{grid-template-columns:repeat(5,1fr)}
 @media(max-width:1380px){ .grid{grid-template-columns:repeat(4,1fr)} }
 @media(max-width:1120px){ .grid{grid-template-columns:repeat(3,1fr)} }
+
+
+/* --- cardurile de depozit: sub mouse rămâne doar bordura, fără umplere --- */
+.dep:hover{background:var(--w)}
+.dep-cta,.dep-cta:hover{background:var(--blue-s)}
