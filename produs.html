@@ -344,9 +344,11 @@ catPanel.querySelectorAll('.cp-item').forEach(b => {
   var PRAG = 6;          /* miscari mai mici de atat se ignora */
   var asteapta = false;
 
+  var nv = document.querySelector('.nav');
   function inaltime() {
     var h = Math.round(hd.getBoundingClientRect().height);
     doc.style.setProperty('--hd-h', h + 'px');
+    if (nv) doc.style.setProperty('--nav-h', Math.round(nv.getBoundingClientRect().height) + 'px');
     return h;
   }
   var hdH = inaltime();

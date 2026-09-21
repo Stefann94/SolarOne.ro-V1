@@ -1911,3 +1911,34 @@ html.fara-scroll{overflow:hidden;padding-right:var(--bara-derulare,0px)}
 .dep-cta:hover{background:#E4EDFF}
 /* aceeasi capcana ca la telefon: .dep span e mai specific decat .dep-eticheta */
 .dep .dep-eticheta{color:var(--blue)}
+
+/* =========================================================
+   PANOURILE LATERALE RĂMÂN LA VEDERE
+   Se opresc sub ce e fixat sus: bara singură când antetul e retras,
+   antet + bară când acesta reapare. Tranziția e aceeași cu a
+   antetului, ca să coboare împreună, nu în trepte.
+   ========================================================= */
+:root{--sus-fix:calc(var(--hd-h,105px) + var(--nav-h,62px) + 16px)}
+html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
+
+.filters,.buybox{
+  position:sticky;
+  top:var(--sus-fix);
+  transition:top .22s ease;
+  max-height:calc(100vh - var(--sus-fix) - 16px);
+  overflow-y:auto;
+  scrollbar-gutter:stable;
+}
+/* pe ecrane mici coloanele se pun una sub alta — fixarea nu mai are sens */
+@media(max-width:900px){
+  .filters,.buybox{position:static;max-height:none;overflow:visible}
+}
+
+/* galeria produsului și bara de sortare primesc același tratament */
+.gal{position:sticky;top:var(--sus-fix);transition:top .22s ease;
+  max-height:calc(100vh - var(--sus-fix) - 16px);overflow-y:auto;scrollbar-gutter:stable}
+.toolbar{position:sticky;top:var(--sus-fix);transition:top .22s ease;z-index:20}
+@media(max-width:900px){
+  .gal{position:static;max-height:none;overflow:visible}
+  .toolbar{position:static}
+}
