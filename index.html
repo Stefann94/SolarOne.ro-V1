@@ -73,10 +73,17 @@
   </ul>
 
   <div class="nav-r">
-    <button class="dep-sel">
+    <div class="dep-sel-wrap">
+    <button class="dep-sel" id="dep-sel" type="button" aria-haspopup="listbox" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-      Piatra Neamț <i>▾</i>
+      <b id="dep-sel-nume">Piatra Neamț</b> <i>▾</i>
     </button>
+    <div class="dep-dd" id="dep-dd" role="listbox" aria-label="Alege depozitul" hidden>
+      <div class="dep-dd-h"><b>Alege depozitul</b><span>Stocul și termenul de ridicare se afișează pentru depozitul ales</span></div>
+      <div class="dep-dd-l" id="dep-dd-l"></div>
+      <button class="dep-dd-f" type="button" id="dep-dd-detalii">Vezi detaliile depozitului →</button>
+    </div>
+    </div>
     <div class="tva-sw" id="tvaSw">
       <button class="on" data-tva="1">cu TVA</button><button data-tva="0">fără TVA</button>
     </div>
@@ -528,7 +535,7 @@
 </div></section>
 
 <!-- ================= DEPOZITE ================= -->
-<section class="sec"><div class="wrap">
+<section class="sec" id="depozite"><div class="wrap">
   <div class="sec-h"><div><h2>Ridici din depozit, azi</h2><p>Stocul e afișat pe fiecare produs, per depozit · Toate depozitele: Luni–Vineri 09–17</p></div></div>
   <div class="deps">
     <div class="dep dep-sediu" role="button" tabindex="0" data-dep="0" aria-label="Depozit SolarOne Piatra Neamț">
@@ -886,6 +893,87 @@ document.addEventListener('keydown', e => {
     asteapta = true;
     window.requestAnimationFrame(verifica);
   }, { passive: true });
+})();
+
+
+/* ================= SELECTOR DE DEPOZIT =================
+   Lista e construita din aceleasi date ca modalul. Alegerea se tine minte
+   in browser, ca sa ramana si dupa reincarcare. */
+(function () {
+  var buton = document.getElementById('dep-sel');
+  var panou = document.getElementById('dep-dd');
+  var lista = document.getElementById('dep-dd-l');
+  var eticheta = document.getElementById('dep-sel-nume');
+  var detalii = document.getElementById('dep-dd-detalii');
+  if (!buton || !panou || !lista) return;
+
+  var CHEIE = 'solarone-depozit';
+  var ales = 0;
+  try {
+    var salvat = localStorage.getItem(CHEIE);
+    if (salvat !== null && DEPOZITE[+salvat]) ales = +salvat;
+  } catch (e) { /* mod privat sau stocare blocata */ }
+
+  lista.innerHTML = DEPOZITE.map(function (d, i) {
+    return '<button class="dep-o" type="button" role="option" data-i="' + i + '">'
+      + '<span class="dep-o-pin"></span>'
+      + '<span class="dep-o-t"><b>' + d.oras + '</b><span>' + d.strada + '</span></span>'
+      + '<span class="dep-o-tel">' + d.telefon + '</span>'
+      + '</button>';
+  }).join('');
+  var optiuni = [].slice.call(lista.children);
+
+  function aplica(i) {
+    ales = i;
+    eticheta.textContent = DEPOZITE[i].oras;
+    optiuni.forEach(function (o, j) {
+      o.classList.toggle('on', j === i);
+      o.setAttribute('aria-selected', j === i ? 'true' : 'false');
+    });
+    try { localStorage.setItem(CHEIE, String(i)); } catch (e) {}
+  }
+  aplica(ales);
+
+  function deschide() {
+    panou.hidden = false;
+    buton.setAttribute('aria-expanded', 'true');
+    optiuni[ales].focus();
+  }
+  function inchide(inapoi) {
+    panou.hidden = true;
+    buton.setAttribute('aria-expanded', 'false');
+    if (inapoi) buton.focus();
+  }
+
+  buton.addEventListener('click', function () { panou.hidden ? deschide() : inchide(true); });
+
+  lista.addEventListener('click', function (e) {
+    var o = e.target.closest('.dep-o'); if (!o) return;
+    aplica(+o.dataset.i);
+    inchide(true);
+  });
+
+  /* pe paginile fara modal, butonul duce la sectiunea de depozite de pe prima pagina */
+  detalii.addEventListener('click', function () {
+    inchide(false);
+    if (typeof dmDeschide === 'function') dmDeschide(ales, buton);
+    else window.location.href = 'index.html#depozite';
+  });
+
+  document.addEventListener('click', function (e) {
+    if (panou.hidden) return;
+    if (!e.target.closest('.dep-sel-wrap')) inchide(false);
+  });
+
+  panou.addEventListener('keydown', function (e) {
+    var i = optiuni.indexOf(document.activeElement);
+    if (e.key === 'Escape') { inchide(true); return; }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      var urm = (i + (e.key === 'ArrowDown' ? 1 : optiuni.length - 1) + optiuni.length) % optiuni.length;
+      optiuni[urm < 0 ? 0 : urm].focus();
+    }
+  });
 })();
 
 </script>
