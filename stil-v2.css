@@ -2047,8 +2047,8 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
   background-image:linear-gradient(var(--linie-albastra),var(--linie-albastra));
   background-repeat:no-repeat;
   background-position:left bottom;
-  background-size:0 3px;
-  transition:background-size .22s ease;
+  background-size:0% 3px;
+  transition:none;
 }
 .dep:hover{
   background-size:100% 3px;
@@ -2060,4 +2060,4 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
 .dep,.dep:hover{background-color:var(--w)}
 .dep-cta,.dep-cta:hover{background-color:var(--blue-s)}
 
-@media(prefers-reduced-motion:reduce){ .dep{transition:none} }
+
