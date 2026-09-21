@@ -2051,7 +2051,7 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
   background-color:var(--w);
   background-image:linear-gradient(var(--linie-albastra),var(--linie-albastra));
   background-repeat:no-repeat;
-  background-position:left bottom;
+  background-position:left calc(100% - 8px);
   transition:none;
 }
 .dep{background-size:0% 3px}
