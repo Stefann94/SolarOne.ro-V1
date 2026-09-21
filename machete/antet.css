@@ -479,3 +479,6 @@
 .hlogo{flex:0 0 auto;justify-content:center;margin-left:0;
   margin-right:calc(max((100vw - var(--col)) / 2, 0px) + var(--pad) - 20px)}
 .hd::before{display:none}
+.hd-in{gap:26px}
+.hlogo{flex:0 0 auto;justify-content:flex-start;margin-left:-4px;margin-right:0}
+.hd::before{display:none}

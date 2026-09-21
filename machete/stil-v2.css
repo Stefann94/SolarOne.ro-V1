@@ -1292,3 +1292,9 @@ svg{width:100%;height:100%}
 
 /* fără aura galbenă din spatele logoului */
 .hd::before{display:none}
+
+/* --- revenire: logo aliniat la stanga, cautarea inapoi pe pozitia ei --- */
+.hd-in{gap:26px}
+.logo{flex:0 0 auto;justify-content:flex-start;margin-left:-4px;margin-right:0}
+/* pata galbena ramane scoasa */
+.hd::before{display:none}
