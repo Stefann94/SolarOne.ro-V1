@@ -514,3 +514,10 @@ html.antet-sus .nav{transform:translateY(calc(-1 * var(--hd-h, 105px)))}
 .nav-l > li > a{text-shadow:none}
 .nav-l > li:hover > a{color:var(--amber)}
 .nav-l li.hot > a{color:var(--amber)}
+
+/* --- hașura diagonală revine în bara de navigare, peste culoarea plată
+       (doar liniile, fără degradeul vertical de dinainte) --- */
+.nav{
+  background-color:#0B44C4;
+  background-image:repeating-linear-gradient(115deg, rgba(255,255,255,.06) 0 1px, transparent 1px 15px);
+}
