@@ -1600,3 +1600,15 @@ svg{width:100%;height:100%}
 .ad-deye .ad2-brand{max-height:24px;max-width:78px}
 /* logoul K2 nu mai atinge marginea */
 .ad-montaj .ad2-brand{bottom:20px;left:18px;max-height:30px;max-width:36px}
+
+/* --- produsele nu se mai suprapun peste texte --- */
+.ad2-t{max-width:56%}
+.ad-acum .ad2-img{right:-2%;bottom:10%;width:54%;height:auto}
+.ad-incarcare .ad2-img{right:-4%;bottom:6%;width:auto;height:62%}
+.ad-deye .ad2-img{right:-2%;bottom:12%;width:44%;height:auto}
+
+/* --- reglaj fin: textele respira, produsele stau sub logo --- */
+.ad2-t{max-width:60%}
+.ad-deye .ad2-img{right:0;bottom:2%;width:auto;height:62%}
+.ad-acum .ad2-img{right:-2%;bottom:8%;width:52%;height:auto}
+.ad-incarcare .ad2-img{right:-3%;bottom:4%;width:auto;height:60%}
