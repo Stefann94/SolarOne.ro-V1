@@ -2,12 +2,12 @@
    Clasele .wrap și .logo au fost redenumite .hwrap / .hlogo,
    ca să nu intre în conflict cu foaia de stil a paginilor vechi. */
 .hwrap{max-width:1500px;margin:0 auto;padding:0 32px;box-sizing:border-box}
-.hd *,.nav *,.cat-panel *{box-sizing:border-box}
-.hd a,.nav a,.cat-panel a{text-decoration:none}
-.hd button,.nav button,.cat-panel button{font-family:inherit;cursor:pointer;border:0}
-.hd svg,.nav svg,.cat-panel svg{width:100%;height:100%}
-.hd img,.cat-panel img{max-width:100%;display:block}
-.nav ul,.cat-panel ul{list-style:none;margin:0;padding:0}
+:where(.hd,.nav,.cat-panel) *{box-sizing:border-box}
+:where(.hd,.nav,.cat-panel) a{text-decoration:none;color:inherit}
+:where(.hd,.nav,.cat-panel) button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit;padding:0}
+:where(.hd,.nav,.cat-panel) svg{width:100%;height:100%}
+:where(.hd,.cat-panel) img{max-width:100%;display:block}
+:where(.nav,.cat-panel) ul{list-style:none;margin:0;padding:0}
 .hd, .nav, .cat-panel, .s-res {
   --blue:#0B44C4; --blue-d:#062E8C; --blue-l:#2C63EE; --blue-s:#EEF3FF;
   --amber:#FFCE0A; --amber-d:#E3B500;
