@@ -2121,3 +2121,14 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
 .card,.card:hover,.doc,.doc:hover,.brand,.brand:hover,.dep-c,.dep-c:hover{
   transition:none;
 }
+
+/* --- logoul mărcii pe cardul de produs, în locul numelui scris --- */
+.p-mk-logo{
+  height:16px;
+  max-width:96px;
+  width:auto;
+  object-fit:contain;
+  object-position:left center;
+}
+/* logourile pătrate ar ieși minuscule la aceeași înălțime */
+.p-mk-logo[src*="k2-systems"],.p-mk-logo[src*="astreea"],.p-mk-logo[src*="dyness"]{height:22px}
