@@ -1549,3 +1549,18 @@ svg{width:100%;height:100%}
 .ad-acum .ad2-img,.ad-acum:hover .ad2-img{transform:rotate(2deg)}
 .ad-incarcare .ad2-img,.ad-incarcare:hover .ad2-img{transform:rotate(-2deg)}
 .ad-panouri .ad2-img,.ad-panouri:hover .ad2-img{transform:rotate(-8deg)}
+
+/* =========================================================
+   RECLAME DE CATEGORIE — produse PNG, fără fundal, drepte
+   ========================================================= */
+.ad2-img{background:none !important;border-radius:0 !important;padding:0 !important;
+  box-shadow:none !important;mix-blend-mode:normal !important;opacity:1 !important;
+  transform:none !important;filter:drop-shadow(0 10px 20px rgba(3,16,43,.28))}
+.ad2:hover .ad2-img{transform:none !important}
+
+/* poziționare și dimensiune, pe fiecare reclamă */
+.ad-deye .ad2-img{right:6%;bottom:-2%;width:auto;height:74%}
+.ad-panouri .ad2-img{right:4%;bottom:6%;width:auto;height:58%;filter:drop-shadow(0 12px 22px rgba(16,24,40,.22))}
+.ad-acum .ad2-img{right:4%;bottom:14%;width:86%;height:auto}
+.ad-montaj .ad2-img{right:-2%;bottom:10%;width:82%;height:auto;filter:drop-shadow(0 12px 22px rgba(16,24,40,.2))}
+.ad-incarcare .ad2-img{right:7%;bottom:-2%;width:auto;height:72%}
