@@ -552,3 +552,18 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
   .gal{position:static;max-height:none;overflow:visible}
   .toolbar{position:static}
 }
+
+
+/* =========================================================
+   BORDURA ALBASTRĂ — regula comună a site-ului
+   Un singur simbol pentru toate suprafețele de tip card. Se
+   schimbă într-un singur loc și se aplică peste tot.
+   ========================================================= */
+:root{--linie-albastra:#0B44C4}
+
+.p,.dep,.cat,.br,.g,.tile,.tl,.sp,.seo,.cp-p,.s-res,
+.card,.stat,.brand,.filters,.toolbar,.seo-text,.gal,.compat,.doc,.buybox,.dep-c,.note{
+  border-color:var(--linie-albastra);
+}
+/* cardurile de depozit aveau deja albastrul la hover — rămâne la fel */
+.dep:hover{border-color:var(--linie-albastra)}
