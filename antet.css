@@ -618,3 +618,7 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
 .dep-cta,.dep-cta:hover{background-color:var(--blue-s)}
 
 
+
+
+/* --- săgeata de la hover nu mai apare: banda de jos e semnalul --- */
+.dep::after,.dep:hover::after{display:none}
