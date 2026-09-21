@@ -2002,9 +2002,14 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
    ========================================================= */
 :root{--linie-albastra:#0B44C4}
 
-.p,.dep,.cat,.br,.g,.tile,.tl,.sp,.seo,.cp-p,.s-res,
-.card,.stat,.brand,.filters,.toolbar,.seo-text,.gal,.compat,.doc,.buybox,.dep-c,.note{
-  border-color:var(--linie-albastra);
+/* Doar la trecerea cu mouse-ul, și mai groasă: bordura de 1px plus un
+   inel interior de 1px. Grosimea nu se obține mărind bordura, fiindcă asta
+   ar împinge conținutul cu un pixel la fiecare hover. */
+.p,.dep,.cat,.br,.g,.tile,.tl,.sp,.cp-p,.card,.doc,.brand,.dep-c{
+  transition:border-color .16s ease, box-shadow .16s ease, background-color .16s ease;
 }
-/* cardurile de depozit aveau deja albastrul la hover — rămâne la fel */
-.dep:hover{border-color:var(--linie-albastra)}
+.p:hover,.dep:hover,.cat:hover,.br:hover,.g:hover,.tile:hover,.tl:hover,
+.sp:hover,.cp-p:hover,.card:hover,.doc:hover,.brand:hover,.dep-c:hover{
+  border-color:var(--linie-albastra);
+  box-shadow:inset 0 0 0 1px var(--linie-albastra);
+}
