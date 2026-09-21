@@ -1612,3 +1612,7 @@ svg{width:100%;height:100%}
 .ad-deye .ad2-img{right:0;bottom:2%;width:auto;height:62%}
 .ad-acum .ad2-img{right:-2%;bottom:8%;width:52%;height:auto}
 .ad-incarcare .ad2-img{right:-3%;bottom:4%;width:auto;height:60%}
+
+/* --- revenire la pozitiile anterioare; doar statia de incarcare ramane mutata --- */
+.ad-deye .ad2-img{right:6%;bottom:-2%;width:auto;height:74%}
+.ad-acum .ad2-img{right:4%;bottom:12%;width:62%;height:auto}
