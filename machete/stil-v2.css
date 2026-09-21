@@ -1298,3 +1298,163 @@ svg{width:100%;height:100%}
 .logo{flex:0 0 auto;justify-content:flex-start;margin-left:-4px;margin-right:0}
 /* pata galbena ramane scoasa */
 .hd::before{display:none}
+
+/* =========================================================
+   DALE DE CATEGORIE — versiune integrată în designul site-ului
+   ========================================================= */
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.tl{position:relative;display:flex;flex-direction:column;background:var(--w);
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  transition:border-color .15s, box-shadow .15s}
+.tl:hover{border-color:#B9CBEA;box-shadow:0 10px 26px -14px rgba(11,62,188,.35)}
+
+/* linia aurie de sus, ca sub butoanele din bara de navigare */
+.tl-line{position:absolute;top:0;left:0;right:0;height:4px;background:var(--amber);opacity:0}
+.tl:hover .tl-line{opacity:1}
+
+/* zona foto: alb, cu aceeasi hasura diagonala ca bara de navigare */
+.tl-ph{height:112px;display:flex;align-items:center;justify-content:center;padding:14px;
+  background-color:#F7F9FD;
+  background-image:repeating-linear-gradient(115deg,rgba(11,68,196,.045) 0 1px,transparent 1px 14px);
+  border-bottom:1px solid var(--line)}
+.tl-ph img{max-height:100%;width:auto;object-fit:contain;mix-blend-mode:multiply}
+.tl-1 .tl-ph,.tl-2 .tl-ph,.tl-3 .tl-ph,.tl-4 .tl-ph,.tl-5 .tl-ph{background-color:#F7F9FD}
+
+/* continut */
+.tl-b{padding:12px 14px 0;display:flex;flex-direction:column;gap:5px;flex:1}
+.tl-h{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tl-h b{font-size:15px;font-weight:700;letter-spacing:-.015em;line-height:1.2}
+.tl-n{font-size:11px;font-weight:800;color:var(--blue);background:var(--blue-s);
+  padding:3px 8px;border-radius:20px;flex:none}
+.tl-s{font-size:11.8px;color:var(--ink3);line-height:1.4;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;min-height:17px}
+
+/* subsol comun, aliniat pe toate dalele */
+.tl-go{margin-top:auto;padding:10px 0;border-top:1px solid var(--line2);
+  font-size:12.2px;font-weight:700;color:var(--blue);display:flex;align-items:center;gap:6px}
+.tl-go::after{content:'→'}
+.tl:hover .tl-go{color:var(--blue-d)}
+
+@media(max-width:1180px){ .tiles{grid-template-columns:repeat(3,1fr)} }
+@media(max-width:820px){ .tiles{grid-template-columns:repeat(2,1fr)} .tl-ph{height:96px} }
+
+/* --- zona foto identica pe toate dalele, cu hasura ca in bara --- */
+.tl-1 .tl-ph,.tl-2 .tl-ph,.tl-3 .tl-ph,.tl-4 .tl-ph,.tl-5 .tl-ph{
+  background:
+    repeating-linear-gradient(115deg, rgba(11,68,196,.05) 0 1px, transparent 1px 14px),
+    linear-gradient(180deg,#FAFCFF 0%,#F2F6FC 100%);
+}
+
+/* =========================================================
+   HAȘURA DIAGONALĂ RĂMÂNE DOAR ÎN BARA DE NAVIGARE
+   ========================================================= */
+.pz-b2b::before{display:none}
+.sl-txt.grid-bg{background:linear-gradient(120deg,#05132F 0%,#0C3288 62%,#1247C6 100%) !important}
+.sl-img.grid-img{background:radial-gradient(circle at 55% 50%,#0C3288,#05132F 74%)}
+
+/* =========================================================
+   RECLAME DE CATEGORIE — compoziții vizuale, ca dalele Altex
+   ========================================================= */
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.pt{position:relative;display:block;height:215px;border-radius:12px;overflow:hidden;isolation:isolate;
+  transition:transform .2s, box-shadow .2s}
+.pt:hover{transform:translateY(-3px);box-shadow:0 18px 38px -16px rgba(3,16,43,.55)}
+
+/* fundalul fiecărei reclame */
+.pt::before{content:'';position:absolute;inset:0;z-index:0}
+/* strat de întunecare jos, pentru text */
+.pt::after{content:'';position:absolute;left:0;right:0;bottom:0;height:58%;z-index:2;
+  background:linear-gradient(180deg,transparent 0%,rgba(3,12,32,.55) 45%,rgba(3,12,32,.88) 100%)}
+
+/* zona cu produse */
+.pt-art{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;
+  padding:18px 18px 62px}
+.pt-p1,.pt-p2{position:absolute;object-fit:contain;transition:transform .3s ease}
+.pt-p1{max-height:58%;max-width:62%;left:50%;top:44%;transform:translate(-50%,-50%);
+  filter:drop-shadow(0 14px 26px rgba(0,0,0,.45))}
+.pt-p2{max-height:34%;max-width:36%;right:12%;bottom:34%;
+  filter:drop-shadow(0 10px 18px rgba(0,0,0,.4));opacity:.95}
+.pt:hover .pt-p1{transform:translate(-50%,-50%) scale(1.07)}
+.pt:hover .pt-p2{transform:scale(1.07)}
+
+/* eticheta cu numărul de produse */
+.pt-badge{position:absolute;top:12px;left:12px;z-index:3;font-size:10.4px;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;color:#0B1A33;background:var(--amber);
+  padding:4px 9px;border-radius:20px}
+
+/* textul de jos */
+.pt-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:14px 16px 15px;
+  display:flex;flex-direction:column;gap:2px}
+.pt-cap b{font-size:15.4px;font-weight:750;color:#fff;letter-spacing:-.015em;line-height:1.2}
+.pt-cap i{font-style:normal;font-size:11.4px;color:#C5D4EE;line-height:1.3;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* fundaluri distincte, toate din paleta mărcii */
+.pt-montaj::before{background:
+  radial-gradient(120% 90% at 20% 0%, rgba(255,206,10,.18), transparent 55%),
+  linear-gradient(150deg,#0A2A6B 0%,#123F9E 55%,#0B2145 100%)}
+.pt-invertoare::before{background:
+  radial-gradient(110% 80% at 80% 10%, rgba(90,150,255,.35), transparent 60%),
+  linear-gradient(145deg,#0B3AAE 0%,#1553E3 60%,#062A80 100%)}
+.pt-panouri::before{background:
+  radial-gradient(90% 70% at 50% 8%, rgba(255,206,10,.32), transparent 62%),
+  linear-gradient(160deg,#0A1C3E 0%,#123163 55%,#060F26 100%)}
+.pt-acumulatori::before{background:
+  radial-gradient(100% 80% at 25% 15%, rgba(23,190,150,.22), transparent 58%),
+  linear-gradient(150deg,#06213F 0%,#0C3F73 58%,#04152C 100%)}
+.pt-incarcare::before{background:
+  radial-gradient(110% 80% at 75% 12%, rgba(120,170,255,.28), transparent 60%),
+  linear-gradient(150deg,#141B2B 0%,#22314F 55%,#0B1220 100%)}
+
+@media(max-width:1180px){ .tiles{grid-template-columns:repeat(3,1fr)} .pt{height:190px} }
+@media(max-width:820px){ .tiles{grid-template-columns:repeat(2,1fr)} .pt{height:170px} }
+
+/* --- reclame de categorie: scena deschisa pentru produs, banda inchisa pentru text --- */
+.pt{height:222px}
+.pt-art{padding:16px 16px 84px}
+.pt-p1{max-height:54%;max-width:60%;top:40%;filter:drop-shadow(0 12px 22px rgba(16,24,40,.22))}
+.pt-p2{max-height:32%;max-width:34%;bottom:44%;right:11%;filter:drop-shadow(0 8px 16px rgba(16,24,40,.2))}
+.pt-p1,.pt-p2{mix-blend-mode:multiply}
+
+/* banda de jos, plina, in nuanta categoriei */
+.pt::after{height:78px;background:linear-gradient(180deg,#0E2A63 0%,#081B45 100%)}
+.pt-cap{padding:13px 16px 14px}
+.pt-cap i{color:#B9CBE8}
+
+/* fundaluri deschise, cu accent de marca */
+.pt-montaj::before{background:
+  radial-gradient(120% 90% at 18% 0%, rgba(255,206,10,.20), transparent 58%),
+  linear-gradient(160deg,#FFFFFF 0%,#EDF3FC 100%)}
+.pt-invertoare::before{background:
+  radial-gradient(110% 85% at 82% 6%, rgba(43,99,238,.16), transparent 60%),
+  linear-gradient(160deg,#FFFFFF 0%,#E9F0FC 100%)}
+.pt-panouri::before{background:
+  radial-gradient(95% 75% at 50% 4%, rgba(255,206,10,.26), transparent 62%),
+  linear-gradient(160deg,#FFFFFF 0%,#F4F1E6 100%)}
+.pt-acumulatori::before{background:
+  radial-gradient(105% 85% at 22% 8%, rgba(14,138,67,.14), transparent 58%),
+  linear-gradient(160deg,#FFFFFF 0%,#EAF4EE 100%)}
+.pt-incarcare::before{background:
+  radial-gradient(110% 85% at 78% 8%, rgba(90,120,170,.18), transparent 60%),
+  linear-gradient(160deg,#FFFFFF 0%,#EDF0F6 100%)}
+
+/* benzi de jos usor diferite, ca sa se distinga categoriile */
+.pt-invertoare::after{background:linear-gradient(180deg,#123FA8 0%,#0A2A72 100%)}
+.pt-panouri::after{background:linear-gradient(180deg,#14213F 0%,#080F22 100%)}
+.pt-acumulatori::after{background:linear-gradient(180deg,#0B3358 0%,#05203A 100%)}
+.pt-incarcare::after{background:linear-gradient(180deg,#232F49 0%,#121826 100%)}
+
+/* --- scena aproape alba, ca fundalul fotografiilor sa dispara complet --- */
+.pt-montaj::before,.pt-invertoare::before,.pt-panouri::before,
+.pt-acumulatori::before,.pt-incarcare::before{
+  background:linear-gradient(180deg,#FFFFFF 0%,#FFFFFF 68%,#F6F9FE 100%)}
+/* accentul de culoare ramane doar ca aura discreta in coltul de sus */
+.pt::before{box-shadow:none}
+.pt-montaj .pt-art{background:radial-gradient(120% 70% at 18% 0%, rgba(255,206,10,.16), transparent 58%)}
+.pt-invertoare .pt-art{background:radial-gradient(115% 70% at 82% 0%, rgba(43,99,238,.14), transparent 60%)}
+.pt-panouri .pt-art{background:radial-gradient(100% 65% at 50% 0%, rgba(255,206,10,.20), transparent 62%)}
+.pt-acumulatori .pt-art{background:radial-gradient(110% 70% at 22% 0%, rgba(14,138,67,.13), transparent 58%)}
+.pt-incarcare .pt-art{background:radial-gradient(115% 70% at 78% 0%, rgba(70,110,180,.14), transparent 60%)}
+
+/* --- fara umbra pe fotografii: desena chenarul dreptunghiular al imaginii --- */
+.pt-p1,.pt-p2{filter:none}
