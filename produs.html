@@ -333,16 +333,5 @@ catPanel.querySelectorAll('.cp-item').forEach(b => {
 
 
 
-/* ---- inaltimea antetului, ca bara albastra sa se opreasca exact sub el ---- */
-(function () {
-  var hd = document.querySelector('.hd');
-  if (!hd) return;
-  function seteaza() {
-    document.documentElement.style.setProperty('--hd-h', Math.round(hd.getBoundingClientRect().height) + 'px');
-  }
-  seteaza();
-  if (window.ResizeObserver) new ResizeObserver(seteaza).observe(hd);
-  window.addEventListener('resize', seteaza);
-})();
 </script>
 </body></html>
