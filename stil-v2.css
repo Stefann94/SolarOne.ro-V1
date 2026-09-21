@@ -1861,3 +1861,8 @@ html.antet-sus .nav{transform:translateY(calc(-1 * var(--hd-h, 105px)))}
   background-color:#0B44C4;
   background-image:repeating-linear-gradient(115deg, rgba(255,255,255,.06) 0 1px, transparent 1px 15px);
 }
+
+/* --- cât timp modalul e deschis, pagina nu se mai derulează și nici nu sare:
+       locul barei de derulare rămâne rezervat --- */
+html.fara-scroll{overflow:hidden;padding-right:var(--bara-derulare,0px)}
+.dm-fer{margin-right:var(--bara-derulare,0px)}

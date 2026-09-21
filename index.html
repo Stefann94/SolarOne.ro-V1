@@ -674,20 +674,34 @@ function dmArata(i) {
     '</div>';
 }
 
+/* Blocheaza derularea fara ca pagina sa sara: cand bara de derulare dispare,
+   zona de continut s-ar largi cu latimea ei, asa ca o compensam cu padding. */
+function blocheazaDerularea(blocat) {
+  var doc = document.documentElement;
+  if (blocat) {
+    var bara = window.innerWidth - doc.clientWidth;
+    doc.style.setProperty('--bara-derulare', bara + 'px');
+    doc.classList.add('fara-scroll');
+  } else {
+    doc.classList.remove('fara-scroll');
+    doc.style.removeProperty('--bara-derulare');
+  }
+}
+
 function dmDeschide(i, declansator) {
   dmUltimul = declansator || null;
   dmArata(i);
   dm.hidden = false;
-  document.body.classList.add('fara-scroll');
+  blocheazaDerularea(true);
   requestAnimationFrame(() => dm.classList.add('deschis'));
-  dm.querySelector('.dm-fer').focus();
+  dm.querySelector('.dm-fer').focus({ preventScroll: true });
 }
 
 function dmInchide() {
   dm.classList.remove('deschis');
-  document.body.classList.remove('fara-scroll');
+  blocheazaDerularea(false);
   setTimeout(() => { dm.hidden = true; }, 180);
-  if (dmUltimul) dmUltimul.focus();
+  if (dmUltimul) dmUltimul.focus({ preventScroll: true });
 }
 
 document.querySelectorAll('.dep').forEach(c => c.addEventListener('click', () =>
