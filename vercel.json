@@ -9,7 +9,7 @@
     },
     {
       "source": "/info",
-      "destination": "/index.html"
+      "destination": "/info.html"
     },
     {
       "source": "/categorie",
