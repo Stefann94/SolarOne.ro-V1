@@ -1880,3 +1880,34 @@ html.fara-scroll{overflow:hidden;padding-right:var(--bara-derulare,0px)}
 .dep-cta .dep-adr{color:#5C6B85}
 /* regula .dep span era mai specifica si stingea culoarea numarului din dala a zecea */
 .dep .dep-tel{color:var(--blue);font-size:12.6px;font-weight:600}
+
+/* =========================================================
+   CARDURILE DE DEPOZIT: plate, cu bandă laterală
+   Fără umbră și fără ridicare la hover — e o listă de contacte,
+   nu un afiș. Banda de 3px dă ritm rândului: chihlimbar la sediu,
+   albastru la cardul pe care stă mouse-ul, gri deschis în rest.
+   ========================================================= */
+.dep{
+  position:relative;
+  overflow:hidden;
+  padding-left:19px;
+  box-shadow:none;
+  transition:border-color .16s ease, background-color .16s ease;
+}
+.dep::before{
+  content:'';
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:3px;
+  background:#E3E9F1;
+  transition:background-color .16s ease;
+}
+.dep:hover{border-color:var(--blue);background:var(--blue-s);box-shadow:none;transform:none}
+.dep:hover::before{background:var(--blue)}
+/* sediul își păstrează banda chihlimbar și sub mouse */
+.dep-sediu::before,.dep-sediu:hover::before{background:var(--amber)}
+/* dala de îndemn e o acțiune, nu un depozit */
+.dep-cta::before,.dep-cta:hover::before{background:var(--blue)}
+.dep-cta:hover{background:#E4EDFF}
+/* aceeasi capcana ca la telefon: .dep span e mai specific decat .dep-eticheta */
+.dep .dep-eticheta{color:var(--blue)}
