@@ -1539,3 +1539,13 @@ svg{width:100%;height:100%}
 .ad-panouri .ad2-img{width:66%;right:-10%;bottom:-4%}
 .ad-montaj .ad2-img{width:68%;right:-8%;bottom:-2%}
 .ad2 b{font-size:16.4px}
+
+/* --- reclamele de categorie: fara efect la hover, doar cursor de mana --- */
+.ad2{cursor:pointer;transition:none}
+.ad2:hover{transform:none;box-shadow:none}
+.ad2-img{transition:none}
+.ad2:hover .ad2-img{transform:none}
+.ad-deye .ad2-img,.ad-deye:hover .ad2-img{transform:rotate(-3deg)}
+.ad-acum .ad2-img,.ad-acum:hover .ad2-img{transform:rotate(2deg)}
+.ad-incarcare .ad2-img,.ad-incarcare:hover .ad2-img{transform:rotate(-2deg)}
+.ad-panouri .ad2-img,.ad-panouri:hover .ad2-img{transform:rotate(-8deg)}
