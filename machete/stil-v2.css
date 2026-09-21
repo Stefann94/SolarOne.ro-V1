@@ -1458,3 +1458,84 @@ svg{width:100%;height:100%}
 
 /* --- fara umbra pe fotografii: desena chenarul dreptunghiular al imaginii --- */
 .pt-p1,.pt-p2{filter:none}
+
+/* =========================================================
+   RECLAME DE CATEGORIE — fiecare cu compoziție proprie
+   ========================================================= */
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.ad2{position:relative;display:block;height:230px;border-radius:12px;overflow:hidden;
+  transition:transform .18s, box-shadow .18s}
+.ad2:hover{transform:translateY(-3px);box-shadow:0 18px 36px -16px rgba(3,16,43,.5)}
+
+.ad2-t{position:relative;z-index:3;padding:16px 16px 0;display:flex;flex-direction:column;gap:4px}
+.ad2-k{font-size:9.6px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--amber)}
+.ad2-k.light{color:#0B44C4}
+.ad2 b{font-size:17px;line-height:1.16;font-weight:800;letter-spacing:-.03em;color:#fff}
+.ad2-sub{font-size:11.2px;color:#AFC2E0;line-height:1.3}
+.ad2-sub.dark{color:#5A6B80}
+.ad-panouri b,.ad-montaj b{color:#0F172A}
+
+.ad2-img{position:absolute;z-index:1;object-fit:contain;mix-blend-mode:multiply;
+  transition:transform .3s ease}
+.ad2:hover .ad2-img{transform:scale(1.06)}
+
+/* eticheta de preț, ca într-o reclamă tipărită */
+.ad2-price{position:absolute;z-index:4;left:16px;bottom:14px;font-size:11.4px;font-weight:600;
+  color:#CBD9F2;background:rgba(3,14,40,.55);border:1px solid rgba(255,255,255,.18);
+  padding:6px 11px;border-radius:8px;backdrop-filter:blur(3px)}
+.ad2-price b{font-size:14.4px;color:var(--amber);letter-spacing:-.02em}
+
+/* fanion diagonal în colț */
+.ad2-flag{position:absolute;z-index:4;right:-30px;top:14px;transform:rotate(38deg);
+  background:var(--amber);color:#1B1500;font-size:10px;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;padding:5px 34px;box-shadow:0 3px 10px rgba(0,0,0,.18)}
+.ad2-flag.alt{background:#0B44C4;color:#fff}
+
+/* ---------- 1. Deye: bleumarin, produs jos-dreapta ---------- */
+.ad-deye{background:linear-gradient(150deg,#08265F 0%,#0B3AAE 62%,#0A2E86 100%)}
+.ad-deye .ad2-img{right:-12%;bottom:-6%;width:78%;mix-blend-mode:screen;opacity:.92}
+
+/* ---------- 2. Panouri: deschis, produs înclinat ---------- */
+.ad-panouri{background:linear-gradient(160deg,#FFFFFF 0%,#FFF6DC 100%)}
+.ad-panouri .ad2-img{right:-14%;bottom:-8%;width:74%;transform:rotate(-8deg)}
+.ad-panouri:hover .ad2-img{transform:rotate(-8deg) scale(1.06)}
+
+/* ---------- 3. Acumulatori: închis, produs centrat jos ---------- */
+.ad-acum{background:linear-gradient(160deg,#06213F 0%,#0C3F73 58%,#04152C 100%)}
+.ad-acum .ad2-img{left:50%;bottom:-4%;width:82%;transform:translateX(-50%);mix-blend-mode:screen;opacity:.9}
+.ad-acum:hover .ad2-img{transform:translateX(-50%) scale(1.06)}
+
+/* ---------- 4. Montaj: deschis, tehnic ---------- */
+.ad-montaj{background:linear-gradient(160deg,#FFFFFF 0%,#EBF0F8 100%)}
+.ad-montaj .ad2-img{right:-10%;bottom:-4%;width:76%}
+
+/* ---------- 5. Încărcare: gri-albastru închis ---------- */
+.ad-incarcare{background:linear-gradient(155deg,#141B2B 0%,#25334F 60%,#0C1220 100%)}
+.ad-incarcare .ad2-img{right:2%;bottom:-2%;width:56%;mix-blend-mode:screen;opacity:.94}
+
+@media(max-width:1180px){ .tiles{grid-template-columns:repeat(3,1fr)} .ad2{height:205px} }
+@media(max-width:820px){ .tiles{grid-template-columns:repeat(2,1fr)} .ad2{height:190px} .ad2 b{font-size:15px} }
+
+/* --- reclame inchise: produsul intr-un card alb, ca intr-un afis --- */
+.ad2-t{max-width:66%}
+.ad-deye .ad2-img,.ad-acum .ad2-img,.ad-incarcare .ad2-img{
+  mix-blend-mode:normal;opacity:1;background:#fff;border-radius:10px;padding:8px;
+  box-shadow:0 14px 30px rgba(0,0,0,.38)}
+.ad-deye .ad2-img{width:52%;right:6%;bottom:12%;transform:rotate(-3deg)}
+.ad-deye:hover .ad2-img{transform:rotate(-3deg) scale(1.05)}
+.ad-acum .ad2-img{width:62%;left:auto;right:8%;bottom:10%;transform:rotate(2deg)}
+.ad-acum:hover .ad2-img{transform:rotate(2deg) scale(1.05)}
+.ad-incarcare .ad2-img{width:46%;right:7%;bottom:12%;transform:rotate(-2deg)}
+.ad-incarcare:hover .ad2-img{transform:rotate(-2deg) scale(1.05)}
+
+/* eticheta de pret nu se suprapune peste card */
+.ad-deye .ad2-price,.ad-incarcare .ad2-price{bottom:12px;left:14px}
+
+/* --- cardurile de produs nu mai acopera textul --- */
+.ad2-t{max-width:60%}
+.ad-deye .ad2-img{width:47%;right:4%;bottom:14%}
+.ad-acum .ad2-img{width:54%;right:4%;bottom:12%}
+.ad-incarcare .ad2-img{width:42%;right:5%;bottom:14%}
+.ad-panouri .ad2-img{width:66%;right:-10%;bottom:-4%}
+.ad-montaj .ad2-img{width:68%;right:-8%;bottom:-2%}
+.ad2 b{font-size:16.4px}
