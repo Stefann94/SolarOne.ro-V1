@@ -2085,3 +2085,32 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
 /* fara pictograma in pilule */
 .dm-chips span{padding:7px 13px;gap:0}
 .dm-chips span::before{content:none}
+
+/* --- mărcile distribuite: logoul în locul numelui --- */
+.br{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:18px 14px 14px;
+  min-height:96px;
+}
+.br img{
+  max-height:30px;
+  max-width:82%;
+  width:auto;
+  object-fit:contain;
+}
+.br span{font-size:11.6px;color:var(--ink3)}
+
+/* --- colțurile de sus ale modalului ---
+   Bara albastră era doar decupată de fereastră. La decupare rămâne o
+   linie de pixeli pe jumătate transparenți, prin care se vedea albul de
+   dedesubt. Bara își primește acum propria rotunjire, iar fundalul
+   ferestrei e albastru, ca orice urmă rămasă să fie tot albastră. --- */
+.dm-fer{background:var(--blue)}
+.dm-bara{border-radius:14px 14px 0 0}
+.dm-corp{background:var(--w)}
+/* logourile pătrate par mai mici decât cele lungi la aceeași înălțime */
+.br img[src*="k2-systems"],.br img[src*="astreea"]{max-height:40px}
