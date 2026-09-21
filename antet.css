@@ -486,10 +486,12 @@
 .srch input::placeholder{font-size:clamp(12px, .88vw, 14.2px)}
 /* =========================================================
    BARA DE NAVIGARE RĂMÂNE VIZIBILĂ LA DERULARE
-   Antetul nu e fix (are position:relative pentru aura logoului),
-   deci bara se oprește chiar la marginea de sus a ecranului.
+   Antetul alb se oprește la 0, bara albastră imediat sub el.
+   --hd-h e măsurată din JS: antetul își schimbă înălțimea cu lățimea
+   ecranului (105px pe desktop, 49px pe tabletă, 119px pe telefon).
    ========================================================= */
-.nav{position:sticky;top:0;z-index:150}
+.hd{position:sticky;top:0;z-index:200}
+.nav{position:sticky;top:var(--hd-h,105px);z-index:150}
 .cat-panel{z-index:160}
 /* si pe ecrane mici bara ramane sus, cu derulare pe orizontala */
-@media(max-width:820px){ .nav{position:sticky;top:0} }
+@media(max-width:820px){ .nav{top:var(--hd-h,49px)} }
