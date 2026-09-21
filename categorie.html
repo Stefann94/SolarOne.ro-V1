@@ -410,5 +410,43 @@ catPanel.querySelectorAll('.cp-item').forEach(b => {
 
 
 
+
+/* ---- antetul alb se retrage la derulare in jos si reapare la derulare in sus ---- */
+(function () {
+  var hd = document.querySelector('.hd');
+  if (!hd) return;
+  var doc = document.documentElement;
+  var ultim = window.pageYOffset || 0;
+  var ascuns = false;
+  var PRAG = 6;          /* miscari mai mici de atat se ignora */
+  var asteapta = false;
+
+  function inaltime() {
+    var h = Math.round(hd.getBoundingClientRect().height);
+    doc.style.setProperty('--hd-h', h + 'px');
+    return h;
+  }
+  var hdH = inaltime();
+  if (window.ResizeObserver) new ResizeObserver(function () { hdH = inaltime(); }).observe(hd);
+  window.addEventListener('resize', function () { hdH = inaltime(); });
+
+  function verifica() {
+    asteapta = false;
+    var y = window.pageYOffset || 0;
+    if (Math.abs(y - ultim) < PRAG) return;
+    var inJos = y > ultim;
+    ultim = y;
+    if (y <= hdH) { doc.classList.remove('antet-sus'); ascuns = false; return; }
+    if (inJos && !ascuns) { doc.classList.add('antet-sus'); ascuns = true; }
+    else if (!inJos && ascuns) { doc.classList.remove('antet-sus'); ascuns = false; }
+  }
+
+  window.addEventListener('scroll', function () {
+    if (asteapta) return;
+    asteapta = true;
+    window.requestAnimationFrame(verifica);
+  }, { passive: true });
+})();
+
 </script>
 </body></html>

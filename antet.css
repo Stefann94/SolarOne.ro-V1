@@ -486,10 +486,19 @@
 .srch input::placeholder{font-size:clamp(12px, .88vw, 14.2px)}
 /* =========================================================
    BARA DE NAVIGARE RĂMÂNE VIZIBILĂ LA DERULARE
-   Rămâne doar bara albastră, lipită de marginea de sus.
-   Antetul alb (logo, căutare, coș) se derulează normal și iese din ecran.
+   La derulare în jos rămâne sus doar bara albastră; antetul alb se retrage.
+   La derulare în sus reapare și antetul. --hd-h e măsurată din JS, fiindcă
+   înălțimea antetului se schimbă cu lățimea ecranului.
    ========================================================= */
-.nav{position:sticky;top:0;z-index:150}
+.hd{position:sticky;top:0;z-index:200;transition:transform .22s ease}
+.nav{position:sticky;top:var(--hd-h,105px);z-index:150;transition:transform .22s ease}
+
+/* derulare în jos: antetul alb urcă și iese, bara albastră îi ia locul sus.
+   Ambele se mută cu exact înălțimea antetului, deci bara ajunge la 0. */
+html.antet-sus .hd{transform:translateY(-100%)}
+html.antet-sus .nav{transform:translateY(calc(-1 * var(--hd-h, 105px)))}
+
+@media(prefers-reduced-motion:reduce){ .hd,.nav{transition:none} }
 .cat-panel{z-index:160}
 /* si pe ecrane mici bara ramane sus, cu derulare pe orizontala */
-@media(max-width:820px){ .nav{top:0} }
+@media(max-width:820px){ .nav{top:var(--hd-h,49px)} }
