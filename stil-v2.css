@@ -1866,3 +1866,17 @@ html.antet-sus .nav{transform:translateY(calc(-1 * var(--hd-h, 105px)))}
        locul barei de derulare rămâne rezervat --- */
 html.fara-scroll{overflow:hidden;padding-right:var(--bara-derulare,0px)}
 .dm-fer{margin-right:var(--bara-derulare,0px)}
+
+/* --- cardurile de depozit: conținut nou (oraș, stradă, telefon) --- */
+.dep b{display:flex;align-items:center;gap:7px}
+.dep-eticheta{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--blue);background:var(--blue-s);border:1px solid #DDE6FA;border-radius:999px;padding:1px 7px}
+.dep-adr{display:block;font-size:11.8px;color:var(--ink3);margin-top:2px}
+.dep-tel{display:inline-block;margin-top:3px;font-size:12.6px;font-weight:600;color:var(--blue)}
+.dep-tel:hover{text-decoration:underline}
+/* a zecea dală: închide rândul, fără să fie un depozit */
+.dep-cta{background:var(--blue-s);border-color:#DDE6FA}
+.dep-cta b{font-size:13.2px;color:var(--blue-d)}
+.dep-cta .dep-adr{color:#5C6B85}
+/* regula .dep span era mai specifica si stingea culoarea numarului din dala a zecea */
+.dep .dep-tel{color:var(--blue);font-size:12.6px;font-weight:600}
