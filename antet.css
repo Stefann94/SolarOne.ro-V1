@@ -644,3 +644,10 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
 /* fara pictograma in pilule */
 .dm-chips span{padding:7px 13px;gap:0}
 .dm-chips span::before{content:none}
+
+/* --- bordura de la hover apare și dispare instant, fără tranziție --- */
+.p,.p:hover,.dep,.dep:hover,.cat,.cat:hover,.br,.br:hover,.g,.g:hover,
+.tile,.tile:hover,.tl,.tl:hover,.sp,.sp:hover,.cp-p,.cp-p:hover,
+.card,.card:hover,.doc,.doc:hover,.brand,.brand:hover,.dep-c,.dep-c:hover{
+  transition:none;
+}
