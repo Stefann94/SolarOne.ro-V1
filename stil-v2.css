@@ -2013,3 +2013,30 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
   border-color:var(--linie-albastra);
   box-shadow:inset 0 0 0 1px var(--linie-albastra);
 }
+
+
+/* --- inelul de hover desenat PESTE conținut ---
+   Cu umbră interioară, copiii cu fundal propriu (zona imaginii, corpul
+   cardului) acopereau inelul și bordura părea groasă doar pe jumătate.
+   Un strat absolut, deasupra, o face uniformă pe tot conturul. --- */
+.p,.cat,.br,.g,.tile,.tl,.cp-p,.card,.doc,.brand,.dep-c{position:relative}
+.p:hover,.cat:hover,.br:hover,.g:hover,.tile:hover,.tl:hover,
+.cp-p:hover,.card:hover,.doc:hover,.brand:hover,.dep-c:hover{
+  box-shadow:none;
+}
+.p:hover::after,.cat:hover::after,.br:hover::after,.g:hover::after,
+.tile:hover::after,.tl:hover::after,.cp-p:hover::after,.card:hover::after,
+.doc:hover::after,.brand:hover::after,.dep-c:hover::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border:1px solid var(--linie-albastra);
+  border-radius:inherit;
+  pointer-events:none;
+  z-index:3;
+}
+
+/* --- cinci produse pe rând: cardurile se îngustează --- */
+.grid{grid-template-columns:repeat(5,1fr)}
+@media(max-width:1380px){ .grid{grid-template-columns:repeat(4,1fr)} }
+@media(max-width:1120px){ .grid{grid-template-columns:repeat(3,1fr)} }
