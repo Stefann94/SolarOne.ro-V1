@@ -1833,3 +1833,24 @@ html.antet-sus .nav{transform:translateY(calc(-1 * var(--hd-h, 105px)))}
 .dm-fer{min-width:0;max-width:100%}
 .dm-hero,.dm-h-s,.dm-panou,.dm-f,.dm-cat{min-width:0}
 .dm-f b,.dm-h-d,.dm-corp h3{overflow-wrap:anywhere}
+
+/* =========================================================
+   MODALUL: culori plate, fără degradeuri
+   O singură culoare pentru ambele bare (albastrul mărcii) și una
+   singură, mai închisă, pentru panoul din dreapta.
+   ========================================================= */
+.dm-bara{background:var(--blue);border-bottom:1px solid rgba(255,255,255,.16)}
+.dm-nav{background:var(--blue);border-bottom:0}
+.dm-panou{background:var(--blue-d)}
+
+/* =========================================================
+   ANTETUL ȘI BARA: culori plate
+   Fără degradeuri, fără hașură diagonală, fără aură în spatele
+   logoului — o singură culoare pentru fiecare bară.
+   ========================================================= */
+.hd{background:#FFFFFF;background-image:none;box-shadow:none;border-bottom:1px solid #E2E8F0}
+.hd::before{display:none}
+.nav{background-color:#0B44C4;background-image:none;border-bottom:0}
+.nav-l > li > a{text-shadow:none}
+.nav-l > li:hover > a{color:var(--amber)}
+.nav-l li.hot > a{color:var(--amber)}

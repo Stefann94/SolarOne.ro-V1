@@ -502,3 +502,15 @@ html.antet-sus .nav{transform:translateY(calc(-1 * var(--hd-h, 105px)))}
 .cat-panel{z-index:160}
 /* si pe ecrane mici bara ramane sus, cu derulare pe orizontala */
 @media(max-width:820px){ .nav{top:var(--hd-h,49px)} }
+
+/* =========================================================
+   ANTETUL ȘI BARA: culori plate
+   Fără degradeuri, fără hașură diagonală, fără aură în spatele
+   logoului — o singură culoare pentru fiecare bară.
+   ========================================================= */
+.hd{background:#FFFFFF;background-image:none;box-shadow:none;border-bottom:1px solid #E2E8F0}
+.hd::before{display:none}
+.nav{background-color:#0B44C4;background-image:none;border-bottom:0}
+.nav-l > li > a{text-shadow:none}
+.nav-l > li:hover > a{color:var(--amber)}
+.nav-l li.hot > a{color:var(--amber)}
