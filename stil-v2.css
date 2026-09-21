@@ -2063,3 +2063,25 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
 
 /* --- săgeata de la hover nu mai apare: banda de jos e semnalul --- */
 .dep::after,.dep:hover::after{display:none}
+
+
+/* --- pilulele din modal: ce se poate ridica de la depozitul ales.
+       Bifă albastră în față, ca să se citească drept „disponibil aici". --- */
+.dm-chips span{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  background:var(--w);
+  border:1px solid #D7E2F6;
+  border-radius:8px;
+  padding:7px 12px 7px 10px;
+  font-size:12.6px;
+  font-weight:600;
+  color:var(--ink);
+  letter-spacing:-.005em;
+}
+.dm-chips span::before{
+  content:'';
+  width:13px;height:13px;flex:none;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B44C4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M4 12.5 9.5 18 20 6.5'/></svg>") center/13px no-repeat;
+}
