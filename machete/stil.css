@@ -229,3 +229,58 @@ footer a:hover{color:#fff}
   .usp .wrap{grid-template-columns:repeat(2,1fr)}
   .search{max-width:none}
 }
+
+/* =========================================================
+   PANOUL DE FILTRE — stilizare completă
+   ========================================================= */
+.filters{background:#fff;border:1px solid #E5EAF0;border-radius:14px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -18px rgba(16,24,40,.25);position:sticky;top:20px}
+
+/* antet */
+.f-head{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:14px 16px;background:linear-gradient(180deg,#F7F9FD,#EFF3FA);border-bottom:1px solid #E5EAF0}
+.f-head b{font-size:15px;letter-spacing:-.015em;color:#10151C}
+.f-reset{font-size:12.2px;font-weight:650;color:#0B44C4}
+.f-reset:hover{color:#062E8C;text-decoration:underline}
+
+/* filtre aplicate */
+.f-active{display:flex;flex-wrap:wrap;gap:6px;padding:12px 16px;border-bottom:1px solid #EEF2F7;background:#FBFCFE}
+.f-tag{display:inline-flex;align-items:center;gap:6px;font-size:11.8px;font-weight:650;color:#0B44C4;
+  background:#EAF0FE;border:1px solid #CBDBFA;padding:4px 9px;border-radius:20px;cursor:pointer}
+.f-tag i{font-style:normal;opacity:.6;font-size:10px}
+.f-tag:hover{background:#DDE8FD}
+.f-tag:hover i{opacity:1}
+
+/* grupuri */
+.fg{border-bottom:1px solid #EEF2F7;padding:14px 16px}
+.fg:last-child{border-bottom:0}
+.fg h4{font-size:10.6px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#8A96A5;
+  margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+
+/* pastile de putere */
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1.5px solid #E1E8F2;background:#fff;border-radius:8px;padding:6px 11px;font-size:12.6px;
+  font-weight:650;color:#3A4757;cursor:pointer;transition:.14s;min-width:40px;text-align:center}
+.chip:hover{border-color:#9FBBF3;color:#0B44C4;background:#F6F9FF}
+.chip.on{background:linear-gradient(180deg,#1553E3,#0B3EBC);border-color:#0B3EBC;color:#fff;
+  box-shadow:0 2px 8px rgba(11,62,188,.3)}
+
+/* bifе */
+.fg label{display:flex;align-items:center;gap:10px;font-size:13.6px;color:#2A3644;
+  padding:7px 8px;margin:0 -8px;border-radius:8px;cursor:pointer;transition:.12s}
+.fg label:hover{background:#F4F7FC}
+.fg label input[type=checkbox]{appearance:none;width:17px;height:17px;border:1.6px solid #C6D2E2;
+  border-radius:5px;background:#fff;flex:none;position:relative;cursor:pointer;transition:.14s}
+.fg label input[type=checkbox]:hover{border-color:#0B44C4}
+.fg label input[type=checkbox]:checked{background:#0B44C4;border-color:#0B44C4}
+.fg label input[type=checkbox]:checked::after{content:'';position:absolute;left:5px;top:1.5px;
+  width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(43deg)}
+.fg label span{margin-left:auto;font-size:11.6px;font-weight:650;color:#8A96A5;
+  background:#F1F4F9;padding:2px 8px;border-radius:20px;transition:.12s}
+.fg label:hover span{background:#E4EBF6;color:#4A5768}
+.fg label input:checked ~ span{background:#EAF0FE;color:#0B44C4}
+
+/* buton de aplicare, fix jos */
+.f-apply{display:block;margin:0;padding:13px 16px;background:linear-gradient(180deg,#FFD429,#FFC800);
+  color:#10151C;font-weight:750;font-size:13.8px;text-align:center;border-top:1px solid #E9D68A}
+.f-apply:hover{background:#FFE04A;color:#10151C}
