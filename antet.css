@@ -734,3 +734,53 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
   .dep-dd{width:min(320px,calc(100vw - 24px));right:auto;left:0}
   .dep-sel-wrap:has(.dep-sel[aria-expanded="true"])::after{right:auto;left:26px}
 }
+
+/* =========================================================
+   SELECTORUL DE DEPOZIT: aceeași înfățișare ca mega-meniurile
+   Lipit de bara de navigare, ramă chihlimbar, colțuri drepte sus.
+   ========================================================= */
+.dep-sel-wrap{position:relative;display:flex;align-items:center;align-self:stretch}
+.dep-sel-wrap:has(.dep-sel[aria-expanded="true"])::after{display:none}
+
+.dep-dd{
+  top:100%;
+  right:0;
+  width:380px;
+  padding:16px 16px 12px;
+  background:var(--w);
+  border:3px solid var(--amber);
+  border-top:0;
+  border-radius:0 0 14px 14px;
+  box-shadow:0 26px 54px -14px rgba(6,22,49,.5), 0 0 0 1px rgba(224,178,0,.25);
+  overflow:visible;
+}
+.dep-dd-h{padding:0 0 10px;border-bottom:0}
+.dep-dd-h b{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink3);
+}
+.dep-dd-h span{display:none}
+
+.dep-dd-l{max-height:none;overflow:visible;padding:0}
+.dep-o{
+  display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  padding:7px 9px;border-radius:7px;
+  font-size:13.2px;color:var(--ink2);
+}
+.dep-o:hover{background:var(--blue-s);color:var(--blue)}
+.dep-o.on{background:var(--blue-s)}
+.dep-o.on .dep-o-t b{color:var(--blue)}
+.dep-o-t{display:flex;align-items:baseline;gap:8px;min-width:0}
+.dep-o-t b{font-size:13.2px;font-weight:600;color:inherit;letter-spacing:0}
+.dep-o-t span{font-size:11.5px;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dep-o-tel{font-size:11.5px;font-weight:600;color:var(--ink3);white-space:nowrap}
+.dep-o:hover .dep-o-tel,.dep-o.on .dep-o-tel{color:var(--blue)}
+
+.dep-dd-f{
+  margin-top:8px;
+  padding:9px 9px 2px;
+  border-top:1px solid var(--line2);
+  background:none;
+  font-size:12.6px;
+}
+.dep-dd-f:hover{background:none;text-decoration:underline}

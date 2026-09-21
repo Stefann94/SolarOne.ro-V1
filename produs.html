@@ -401,7 +401,7 @@ const DEPOZITE = [{"oras":"Piatra Neamț","strada":"Str. Nordului 8A","telefon":
 
   lista.innerHTML = DEPOZITE.map(function (d, i) {
     return '<button class="dep-o" type="button" role="option" data-i="' + i + '">'
-      + '<span class="dep-o-pin"></span>'
+      + ''
       + '<span class="dep-o-t"><b>' + d.oras + '</b><span>' + d.strada + '</span></span>'
       + '<span class="dep-o-tel">' + d.telefon + '</span>'
       + '</button>';
