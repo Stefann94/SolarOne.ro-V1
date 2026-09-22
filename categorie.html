@@ -3,7 +3,8 @@
 <title>Invertoare fotovoltaice – hibride, on-grid, off-grid | SolarOne</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="stil.css">
-<link rel="stylesheet" href="antet.css"><meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="antet.css">
+<link rel="stylesheet" href="mobil.css"><meta name="robots" content="noindex, nofollow">
 </head><body>
 <header class="hd"><div class="hwrap hd-in">
   <a class="hlogo" href="index.html"><img src="https://www.solarone.ro/image/catalog/Solar%20One-%20Sisteme%20Fotovoltaice%20Logo.png" alt="SolarOne"></a>
@@ -544,16 +545,18 @@ const DEPOZITE = [{"oras":"Piatra Neamț","strada":"Str. Nordului 8A","telefon":
 
 /* =========================================================
    INTERFAȚA PENTRU TELEFON
-   Construiește bara de sus compactă, sertarul de meniu, căutarea pe tot
-   ecranul și bara fixă de jos. Elementele grele (căutarea instantanee,
-   panoul de catalog, selectorul de depozit) nu sunt duplicate: se mută
-   nodurile existente, ca logica deja scrisă să funcționeze mai departe.
+   Construiește bara de sus, sertarul de meniu, căutarea pe tot
+   ecranul, bara fixă de jos și foaia de filtre.
+   Nimic nu se duplică: nodurile existente (bara de căutare,
+   lista de rezultate, panoul de filtre) se MUTĂ, ca logica deja
+   scrisă pentru ele să funcționeze mai departe neschimbată.
    ========================================================= */
 (function () {
   var PRAG = window.matchMedia('(max-width: 820px)');
   var doc = document.documentElement;
   var construit = false;
-  var top, sertar, cautare, jos, gazdaCautare, foaie, gazdaFiltre;
+  var sertar, cautare, foaie;
+  var gazdaCautare = null, gazdaRez = null, gazdaFiltre = null;
 
   var ico = {
     meniu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
@@ -567,31 +570,34 @@ const DEPOZITE = [{"oras":"Piatra Neamț","strada":"Str. Nordului 8A","telefon":
     filtru: '<path d="M4 6h16M7 12h10M10 18h4"/>',
     sort: '<path d="M7 4v16M7 20l-3-3M7 4l3 3M17 20V4M17 4l3 3M17 20l-3-3"/>'
   };
-  function svg(d, cls) {
-    return '<svg class="' + (cls || 'mb-i') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+  function svg(d) {
+    return '<svg class="mb-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
       'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">' + d + '</svg>';
+  }
+  function el(cls, html) {
+    var e = document.createElement('div');
+    e.className = cls;
+    if (html) e.innerHTML = html;
+    return e;
   }
 
   function construieste() {
     if (construit) return;
     construit = true;
 
-    var siglaSrc = (document.querySelector('.logo img, .hlogo img') || {}).src || '';
+    var sigla = document.querySelector('.logo img, .hlogo img');
 
     /* ---- bara de sus ---- */
-    top = document.createElement('header');
+    var top = document.createElement('header');
     top.className = 'mb-top';
     top.innerHTML =
       '<button class="mb-b" type="button" data-rol="meniu" aria-label="Meniu">' + svg(ico.meniu) + '</button>' +
-      '<a class="mb-logo" href="index.html"><img src="' + siglaSrc + '" alt="SolarOne"></a>' +
+      '<a class="mb-logo" href="index.html"><img src="' + (sigla ? sigla.getAttribute('src') : '') + '" alt="SolarOne"></a>' +
       '<button class="mb-b" type="button" data-rol="cauta" aria-label="Caută">' + svg(ico.cauta) + '</button>' +
       '<a class="mb-b mb-cos" href="#" aria-label="Coș">' + svg(ico.cos) + '<i>0</i></a>';
     document.body.insertBefore(top, document.body.firstChild);
 
     /* ---- sertarul de meniu ---- */
-    sertar = document.createElement('div');
-    sertar.className = 'mb-sertar';
-    sertar.hidden = true;
     var categorii = [].slice.call(document.querySelectorAll('.nav-l > li > a')).map(function (a) {
       return '<a href="' + a.getAttribute('href') + '">' + a.textContent.trim() + '</a>';
     }).join('');
@@ -600,63 +606,75 @@ const DEPOZITE = [{"oras":"Piatra Neamț","strada":"Str. Nordului 8A","telefon":
           return '<button type="button" class="mb-dep" data-i="' + i + '"><b>' + d.oras + '</b><span>' + d.telefon + '</span></button>';
         }).join('')
       : '';
-    sertar.innerHTML =
+    sertar = el('mb-sertar',
       '<div class="mb-fundal" data-rol="inchide"></div>' +
       '<nav class="mb-panou" aria-label="Meniu">' +
-        '<div class="mb-panou-cap">' +
-          '<b>Meniu</b>' +
-          '<button class="mb-x" type="button" data-rol="inchide" aria-label="Închide">' + svg(ico.x) + '</button>' +
-        '</div>' +
+        '<div class="mb-panou-cap"><b>Meniu</b>' +
+          '<button class="mb-x" type="button" data-rol="inchide" aria-label="Închide">' + svg(ico.x) + '</button></div>' +
         '<div class="mb-panou-corp">' +
-          '<span class="mb-titlu">Categorii</span>' +
-          '<div class="mb-lista">' + categorii + '</div>' +
+          '<span class="mb-titlu">Categorii</span><div class="mb-lista">' + categorii + '</div>' +
           '<span class="mb-titlu">Pentru profesioniști</span>' +
-          '<div class="mb-lista"><a href="b2b.html">Program B2B · preț instalatori</a><a href="#">Autentificare</a><a href="#">Contact</a></div>' +
+          '<div class="mb-lista"><a href="b2b.html">Program B2B · preț instalatori</a>' +
+            '<a href="#">Autentificare</a><a href="#">Contact</a></div>' +
           (depozite ? '<span class="mb-titlu">Depozite</span><div class="mb-dep-l">' + depozite + '</div>' : '') +
         '</div>' +
-      '</nav>';
+      '</nav>');
+    sertar.hidden = true;
     document.body.appendChild(sertar);
 
     /* ---- căutarea pe tot ecranul ---- */
-    cautare = document.createElement('div');
-    cautare.className = 'mb-cautare';
-    cautare.hidden = true;
-    cautare.innerHTML =
+    cautare = el('mb-cautare',
       '<div class="mb-c-cap">' +
         '<button class="mb-b" type="button" data-rol="inchide-c" aria-label="Înapoi">' + svg(ico.inapoi) + '</button>' +
         '<div class="mb-c-slot"></div>' +
-      '</div>';
+      '</div>' +
+      '<div class="mb-c-corp"></div>');
+    cautare.hidden = true;
     document.body.appendChild(cautare);
-    gazdaCautare = document.querySelector('.srch') ? document.querySelector('.srch').parentNode : null;
+    var s = document.querySelector('.srch');
+    var r = document.querySelector('.s-res');
+    if (s) gazdaCautare = s.parentNode;
+    if (r) gazdaRez = r.parentNode;
 
-    /* ---- filtrele devin o foaie, deschisă dintr-o bară lipicioasă ---- */
+    /* ---- filtrele: bară lipicioasă + foaie ---- */
     var panouF = document.querySelector('.filters');
     if (panouF) {
       gazdaFiltre = panouF.parentNode;
-      var bara = document.createElement('div');
-      bara.className = 'mb-bara-f';
-      bara.innerHTML =
-        '<button type="button" data-rol="filtre">' + svg(ico.filtru) + 'Filtre<i></i></button>' +
-        '<button type="button" data-rol="sortare">' + svg(ico.sort) + 'Sortare</button>';
-      var gazdaBara = document.querySelector('.cat-l') || document.querySelector('.toolbar');
-      if (gazdaBara && gazdaBara.parentNode) gazdaBara.parentNode.insertBefore(bara, gazdaBara);
+      var bara = el('mb-bara-f',
+        '<button type="button" data-rol="filtre">' + svg(ico.filtru) + 'Filtre</button>' +
+        '<button type="button" data-rol="sortare">' + svg(ico.sort) + 'Sortare</button>');
+      var gazda = document.querySelector('.cat-l');
+      if (gazda && gazda.parentNode) gazda.parentNode.insertBefore(bara, gazda);
 
-      foaie = document.createElement('div');
-      foaie.className = 'mb-foaie';
-      foaie.hidden = true;
-      foaie.innerHTML =
+      foaie = el('mb-foaie',
         '<div class="mb-fundal" data-rol="inchide-f"></div>' +
         '<div class="mb-foaie-p">' +
           '<div class="mb-foaie-cap"><b>Filtre</b>' +
             '<button class="mb-x" type="button" data-rol="inchide-f" aria-label="Închide">' + svg(ico.x) + '</button></div>' +
           '<div class="mb-foaie-corp"></div>' +
           '<button class="mb-foaie-ok" type="button" data-rol="inchide-f">Vezi produsele</button>' +
-        '</div>';
+        '</div>');
+      foaie.hidden = true;
       document.body.appendChild(foaie);
     }
 
+    /* ---- fișa de produs: bară fixă de cumpărare ----
+       Cutia de preț ajunge departe în pagină pe telefon, așa că prețul
+       și butonul rămân la îndemână, deasupra barei de navigare. */
+    var cutie = document.querySelector('.buybox');
+    if (cutie) {
+      var pret = cutie.querySelector('.price-main');
+      var sub = cutie.querySelector('.price-sub');
+      var cump = el('mb-cumpara',
+        '<div class="mb-cumpara-p"><b>' + (pret ? pret.textContent.trim() : '') + '</b>' +
+          '<span>' + (sub ? sub.textContent.split('·')[0].trim() : '') + '</span></div>' +
+        '<button type="button" class="mb-cumpara-b">Adaugă în coș</button>');
+      document.body.appendChild(cump);
+      doc.classList.add('are-cumpara');
+    }
+
     /* ---- bara fixă de jos ---- */
-    jos = document.createElement('nav');
+    var jos = document.createElement('nav');
     jos.className = 'mb-jos';
     jos.innerHTML =
       '<a href="index.html">' + svg(ico.acasa) + '<span>Acasă</span></a>' +
@@ -671,72 +689,79 @@ const DEPOZITE = [{"oras":"Piatra Neamț","strada":"Str. Nordului 8A","telefon":
       var t = e.target.closest('[data-rol]');
       if (t) {
         var rol = t.dataset.rol;
-        if (rol === 'meniu') { deschideSertar(); return; }
-        if (rol === 'cauta') { deschideCautare(); return; }
-        if (rol === 'inchide') { inchideSertar(); return; }
-        if (rol === 'inchide-c') { inchideCautare(); return; }
-        if (rol === 'filtre') { deschideFoaie(); return; }
-        if (rol === 'inchide-f') { inchideFoaie(); return; }
+        if (rol === 'meniu') return deschide(sertar);
+        if (rol === 'inchide') return inchide(sertar);
+        if (rol === 'cauta') return deschideCautare();
+        if (rol === 'inchide-c') return inchideCautare();
+        if (rol === 'filtre') return deschideFiltre();
+        if (rol === 'inchide-f') return inchideFiltre();
       }
       var d = e.target.closest('.mb-dep');
-      if (d && typeof dmDeschide === 'function') { inchideSertar(); dmDeschide(+d.dataset.i, null); }
+      if (d && typeof dmDeschide === 'function') { inchide(sertar); dmDeschide(+d.dataset.i, null); }
     });
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
-      if (!sertar.hidden) inchideSertar();
-      if (!cautare.hidden) inchideCautare();
+      if (sertar && !sertar.hidden) inchide(sertar);
+      if (cautare && !cautare.hidden) inchideCautare();
+      if (foaie && !foaie.hidden) inchideFiltre();
     });
   }
 
   function blocheaza(pornit) {
-    if (typeof blocheazaDerularea === 'function') { blocheazaDerularea(pornit); return; }
+    if (typeof blocheazaDerularea === 'function') return blocheazaDerularea(pornit);
     doc.classList.toggle('fara-scroll', pornit);
   }
-
-  function deschideSertar() { construieste(); sertar.hidden = false; requestAnimationFrame(function () { sertar.classList.add('deschis'); }); blocheaza(true); }
-  function inchideSertar() { sertar.classList.remove('deschis'); blocheaza(false); setTimeout(function () { sertar.hidden = true; }, 200); }
+  function deschide(p) {
+    p.hidden = false;
+    requestAnimationFrame(function () { p.classList.add('deschis'); });
+    blocheaza(true);
+  }
+  function inchide(p) {
+    p.classList.remove('deschis');
+    blocheaza(false);
+    setTimeout(function () { p.hidden = true; }, 220);
+  }
 
   function deschideCautare() {
     construieste();
     var s = document.querySelector('.srch');
+    var r = document.querySelector('.s-res');
     if (s) cautare.querySelector('.mb-c-slot').appendChild(s);
+    if (r) cautare.querySelector('.mb-c-corp').appendChild(r);
     cautare.hidden = false;
     blocheaza(true);
     var inp = cautare.querySelector('input');
-    if (inp) { inp.focus(); }
+    if (inp) inp.focus();
   }
   function inchideCautare() {
     var s = cautare.querySelector('.srch');
+    var r = cautare.querySelector('.s-res');
+    if (r && gazdaRez) gazdaRez.appendChild(r);
     if (s && gazdaCautare) gazdaCautare.appendChild(s);
     cautare.hidden = true;
     blocheaza(false);
   }
 
-  function deschideFoaie() {
+  function deschideFiltre() {
     if (!foaie) return;
     var f = document.querySelector('.filters');
     if (f) foaie.querySelector('.mb-foaie-corp').appendChild(f);
-    foaie.hidden = false;
-    requestAnimationFrame(function () { foaie.classList.add('deschis'); });
-    blocheaza(true);
+    deschide(foaie);
   }
-  function inchideFoaie() {
+  function inchideFiltre() {
     if (!foaie) return;
     var f = foaie.querySelector('.filters');
     if (f && gazdaFiltre) gazdaFiltre.appendChild(f);
-    foaie.classList.remove('deschis');
-    blocheaza(false);
-    setTimeout(function () { foaie.hidden = true; }, 200);
+    inchide(foaie);
   }
 
   function potriveste() {
-    if (PRAG.matches) { construieste(); doc.classList.add('e-mobil'); }
-    else {
-      doc.classList.remove('e-mobil');
-      if (construit && !cautare.hidden) inchideCautare();
-      if (construit && !sertar.hidden) inchideSertar();
-      if (construit && foaie && !foaie.hidden) inchideFoaie();
-    }
+    if (PRAG.matches) { construieste(); doc.classList.add('e-mobil'); return; }
+    doc.classList.remove('e-mobil');
+    if (!construit) return;
+    if (!cautare.hidden) inchideCautare();
+    if (!sertar.hidden) inchide(sertar);
+    if (foaie && !foaie.hidden) inchideFiltre();
   }
   potriveste();
   if (PRAG.addEventListener) PRAG.addEventListener('change', potriveste);
