@@ -605,8 +605,7 @@ const DEPOZITE = [{"oras":"Piatra Neamț","strada":"Str. Nordului 8A","telefon":
     /* ---- rândul de căutare, imediat sub bară ----
        Reținem întâi locul din antetul de desktop (părinte și vecin), ca bara
        să se poată întoarce exact acolo la lărgirea ferestrei. */
-    randCautare = el('mb-cauta',
-      '<p class="mb-cauta-info"><i></i>Stoc propriu în 9 depozite · livrare în 24–48 h</p>');
+    randCautare = el('mb-cauta', '');
     document.body.insertBefore(randCautare, top.nextSibling);
     var bara = document.querySelector('.srch');
     if (bara) {

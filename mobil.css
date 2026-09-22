@@ -103,15 +103,6 @@ body{overflow-x:clip;width:100%;max-width:100%}
 }
 .mb-cauta .s-btn svg{width:15px;height:15px}
 .mb-cauta .s-res{top:52px}
-/* linia informativa de sub camp */
-.mb-cauta-info{
-  display:flex;align-items:center;gap:7px;margin:8px 2px 0;
-  font-size:11.6px;font-weight:600;line-height:1.3;color:var(--ink3);
-}
-.mb-cauta-info i{
-  flex:none;width:7px;height:7px;border-radius:50%;background:#16A34A;
-  box-shadow:0 0 0 3px rgba(22,163,74,.16);
-}
 
 /* ---- bara fixă de jos ---- */
 .mb-jos{
@@ -221,49 +212,33 @@ body{overflow-x:clip;width:100%;max-width:100%}
    3. PRIMA PAGINĂ
    ========================================================= */
 
-/* ---- caruselul ----
-   Inaltime fixa, ca toate cele cinci reclame sa ocupe exact acelasi loc si
-   pagina sa nu salte la schimbarea lor. Textul e micsorat cat sa incapa si
-   cea mai lunga reclama, iar jos ramane o banda libera pentru puncte si
-   sageti, ca sa nu se suprapuna peste text. */
+/* ---- caruselul: aceeasi compozitie ca pe desktop, micsorata ----
+   Panoul de text cu pana oblica, fotografia produsului pe fundalul ei,
+   sagetile pe laterale si punctele centrate jos, doar la scara ecranului. */
 .promo-zone .wrap{padding:0}
 .promo-top{display:block}
-.banner{border-radius:0;height:344px}
+.banner{border-radius:0;height:320px}
 .b-track,.slide{height:100%}
-.slide{display:block !important;overflow:hidden}
-.slide .sl-txt{
-  padding:22px 20px 64px !important;
-  min-height:0 !important;max-width:100% !important;
-  height:100%;justify-content:center;
-}
-/* pana diagonală acoperea ultimele cuvinte pe ecran îngust */
-.slide .sl-txt::after{display:none !important}
-.sl-tag{font-size:9.6px;padding:4px 10px;margin-bottom:11px}
-.sl-txt h2{font-size:22px !important;line-height:1.14 !important;margin-bottom:8px}
-.sl-txt p{font-size:13px !important;line-height:1.45 !important;max-width:100% !important;margin-bottom:14px}
-.sl-btn{font-size:13.6px;padding:11px 20px;border-radius:9px}
-.sl-note{font-size:10.6px;margin-top:10px}
-.sl-img,.sl-img.grid-img{display:none !important}
-
-/* sagetile: doua discuri mici in coltul din dreapta jos, in afara textului */
-.b-nav{
-  display:flex;align-items:center;justify-content:center;
-  top:auto;bottom:15px;transform:none;
-  width:34px;height:34px;font-size:19px;line-height:1;
-  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.34);
-  color:#fff;backdrop-filter:blur(3px);box-shadow:none;
-}
-.b-nav:active{background:rgba(255,255,255,.9);color:var(--ink);border-color:transparent}
-.b-nav.prev{left:auto;right:58px}
-.b-nav.next{right:16px}
-/* punctele raman in stanga, la aceeasi inaltime cu sagetile */
-.b-dots{left:20px;right:auto;bottom:25px;transform:none;gap:6px}
-.b-dots span{width:7px;height:7px}
-.b-dots span.on{width:20px}
-/* pe reclama galbena, comenzile albe si punctul galben dispareau in fundal */
-.banner:has(.slide.on .sl-txt.amber) .b-nav{background:rgba(16,21,28,.08);border-color:rgba(16,21,28,.28);color:var(--ink)}
-.banner:has(.slide.on .sl-txt.amber) .b-dots span{background:rgba(16,21,28,.25)}
-.banner:has(.slide.on .sl-txt.amber) .b-dots span.on{background:var(--ink)}
+.slide{display:grid !important;grid-template-columns:1.05fr .95fr !important;overflow:hidden}
+/* pana oblica e inclinata, deci jos intra adanc in coloana de text; textul
+   sta deasupra ei (au acelasi fundal), ca sa nu fie acoperit */
+.slide .sl-txt > *{position:relative;z-index:1}
+.sl-tag,.sl-btn{white-space:nowrap}
+.slide .sl-txt{padding:18px 10px 34px 42px !important;justify-content:center;min-width:0}
+.slide .sl-txt::after{display:block;right:-26px;width:52px}
+.slide .sl-img{display:flex !important;padding:14px 10px 30px 24px;min-width:0}
+.slide .sl-img img{max-height:150px;max-width:100%;width:auto}
+.sl-tag{font-size:7.6px;padding:3px 7px;margin-bottom:8px;letter-spacing:.08em}
+.slide h2{font-size:15px !important;line-height:1.17 !important;margin-bottom:6px}
+.slide p{font-size:10.6px !important;line-height:1.4 !important;margin-bottom:10px}
+.sl-btn{font-size:11px;padding:8px 12px;border-radius:7px}
+.sl-note{font-size:8.6px;margin-top:7px}
+.b-nav{width:28px;height:28px;font-size:16px}
+.b-nav.prev{left:8px}
+.b-nav.next{right:8px}
+.b-dots{bottom:11px;gap:5px}
+.b-dots span{width:6px;height:6px}
+.b-dots span.on{width:16px}
 
 /* ---- dalele promo de lângă carusel ---- */
 .side-promo{
@@ -460,8 +435,7 @@ body{overflow-x:clip;width:100%;max-width:100%}
   .cats,.guides{grid-template-columns:minmax(0,1fr) !important}
   .brands{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}
   .cat-l .grid,.grid.grid-3{grid-template-columns:minmax(0,1fr) !important}
-  .sl-txt h2{font-size:20.5px !important}
-  .banner{height:352px}
+  .slide h2{font-size:14px !important}
   .mb-logo img{height:48px}
   .mb-top{gap:6px;padding:0 10px}
   .mb-b{width:40px;height:40px}
