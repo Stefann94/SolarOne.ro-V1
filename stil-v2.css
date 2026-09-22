@@ -2693,3 +2693,138 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
   /* --- rândurile cu derulare încep aliniate cu restul paginii --- */
   .promo-side{padding:12px 16px !important;margin:0 !important}
 }
+
+/* --- pana diagonală de la marginea textului acoperea ultimele cuvinte
+       pe ecran îngust; pe telefon nu are ce decora --- */
+.mb-rand{display:contents}
+@media(max-width:820px){
+  .slide .sl-txt::after{display:none !important}
+  .slide .sl-txt{padding:24px 18px 22px !important}
+  .side-promo{
+    display:grid !important;grid-auto-flow:column;grid-auto-columns:78%;
+    gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding:12px 16px;margin:0;
+  }
+  .side-promo > *{scroll-snap-align:start;min-width:0}
+  .side-promo::-webkit-scrollbar{display:none}
+}
+@media(max-width:430px){ .side-promo{grid-auto-columns:86%} }
+
+/* --- rândurile cu derulare pe flex, nu pe grilă ---
+   Containerele au deja un șablon de coloane propriu, iar „grid-auto-columns"
+   nu se aplică pe coloane explicite. Flex nu moștenește niciun șablon. --- */
+@media(max-width:820px){
+  .side-promo,.tiles,.grid{
+    display:flex !important;
+    gap:10px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .side-promo{padding:12px 16px !important;margin:0 !important}
+  .tiles,.grid{padding:0 16px 4px !important}
+  .side-promo > *{flex:0 0 78%}
+  .tiles > *{flex:0 0 76%}
+  .grid > *{flex:0 0 62%}
+  .side-promo > *,.tiles > *,.grid > *{scroll-snap-align:start;min-width:0}
+  .side-promo::-webkit-scrollbar,.tiles::-webkit-scrollbar,.grid::-webkit-scrollbar{display:none}
+}
+@media(max-width:430px){
+  .side-promo > *{flex-basis:86%}
+  .tiles > *{flex-basis:84%}
+  .grid > *{flex-basis:72%}
+}
+/* „!important" de pe rândurile cu derulare bătea regula de ascundere a taburilor */
+@media(max-width:820px){ .grid.hide,.tiles.hide,.side-promo.hide{display:none !important} }
+
+/* --- mărcile: sunt doar logouri, încap câte două chiar și pe telefon îngust --- */
+@media(max-width:430px){
+  .brands{grid-template-columns:1fr 1fr !important}
+  .br{min-height:68px;padding:12px 8px}
+  .br img{max-height:21px}
+  .br span{font-size:10.8px}
+}
+
+/* =========================================================
+   TELEFON: pagina de categorie și fișa de produs
+   ========================================================= */
+.mb-bara-f,.mb-foaie{display:none}
+@media(max-width:820px){
+
+  /* ---- coloanele se așază una sub alta ---- */
+  .cat-l,.pd{grid-template-columns:1fr !important;gap:14px}
+  .wrap{padding:0 16px}
+
+  /* ---- bara lipicioasă cu Filtre și Sortare ---- */
+  .mb-bara-f{
+    display:grid;grid-template-columns:1fr 1fr;gap:8px;
+    position:sticky;top:56px;z-index:120;
+    padding:10px 0;margin-bottom:2px;
+    background:var(--bg);
+  }
+  .mb-bara-f button{
+    display:flex;align-items:center;justify-content:center;gap:7px;
+    padding:11px 12px;border:1px solid var(--line);border-radius:10px;
+    background:var(--w);font:inherit;font-size:13.6px;font-weight:600;color:var(--ink);cursor:pointer;
+  }
+  .mb-bara-f .mb-i{width:17px;height:17px;color:var(--blue)}
+  .mb-bara-f button:active{border-color:var(--blue);background:var(--blue-s)}
+  /* panoul de filtre nu mai sta in pagina; se deschide din bara */
+  .filters{display:none !important}
+  .mb-foaie .filters{display:block !important;position:static !important;max-height:none;border:0;box-shadow:none;border-radius:0}
+  .toolbar{display:none}
+
+  /* ---- foaia de filtre ---- */
+  .mb-foaie{display:block;position:fixed;inset:0;z-index:420}
+  .mb-foaie[hidden]{display:none}
+  .mb-foaie .mb-fundal{position:absolute;inset:0;background:rgba(4,14,38,.6);opacity:0;transition:opacity .2s ease}
+  .mb-foaie.deschis .mb-fundal{opacity:1}
+  .mb-foaie-p{
+    position:absolute;left:0;right:0;bottom:0;
+    max-height:92vh;display:flex;flex-direction:column;
+    background:var(--w);border-radius:16px 16px 0 0;
+    transform:translateY(100%);transition:transform .22s ease;
+  }
+  .mb-foaie.deschis .mb-foaie-p{transform:none}
+  .mb-foaie-cap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 16px;background:#0B44C4;color:#fff;border-radius:16px 16px 0 0;
+  }
+  .mb-foaie-cap b{font-size:16px}
+  .mb-foaie-corp{flex:1;overflow-y:auto;min-height:0;padding:4px 0}
+  .mb-foaie-ok{
+    border:0;background:var(--blue);color:#fff;font:inherit;font-size:15px;font-weight:700;
+    padding:15px;cursor:pointer;
+    padding-bottom:calc(15px + env(safe-area-inset-bottom,0px));
+  }
+
+  /* ---- lista de produse din categorie: două pe rând ---- */
+  .cat-l .grid,.grid.grid-3{
+    display:grid !important;grid-template-columns:1fr 1fr !important;
+    gap:10px;overflow:visible;padding:0 !important;
+  }
+  .cat-l .grid > *,.grid.grid-3 > *{flex:none}
+
+  /* ---- depozitele, mai compacte ---- */
+  .dep{padding:11px 14px}
+  .dep b{font-size:14px}
+}
+@media(max-width:430px){
+  .cat-l .grid,.grid.grid-3{grid-template-columns:1fr !important}
+}
+
+/* =========================================================
+   SUBLINIEREA BUTONULUI ȘI RAMA MENIULUI — O SINGURĂ LINIE
+   Capătul de jos al butonului coincide cu marginea de sus a panoului
+   la orice lățime (verificat la 1500, 1300, 1100 și 900 px), așa că
+   subliniera se coboară exact peste banda ramei: aceeași grosime,
+   aceeași culoare, același rând de pixeli. Nimic nu e legat de o
+   lățime anume, deci se comportă la fel pe orice ecran.
+   ========================================================= */
+.mega{border-top:3px solid var(--amber)}
+.nav-l > li > a::after{
+  left:0;right:0;
+  bottom:-3px;
+  height:3px;
+}
