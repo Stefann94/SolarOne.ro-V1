@@ -2471,3 +2471,8 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
 
 /* campurile de formular nu mostenesc fontul implicit; le aliniem la Roboto */
 button,input,select,textarea{font-family:inherit}
+
+/* caruselul se poate trage cu mouse-ul sau cu degetul; derularea verticala ramane a paginii */
+.banner{touch-action:pan-y;cursor:grab;-webkit-user-select:none;user-select:none}
+.banner.trage{cursor:grabbing}
+.banner img{-webkit-user-drag:none}

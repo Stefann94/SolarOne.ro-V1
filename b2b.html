@@ -336,6 +336,54 @@ if (banner) {
   let bTimer = setInterval(() => go(bi + 1), 6000);
   banner.addEventListener('mouseenter', () => clearInterval(bTimer));
   banner.addEventListener('mouseleave', () => { bTimer = setInterval(() => go(bi + 1), 6000); });
+  /* ---- tragere cu mouse-ul sau cu degetul ----
+     Banda urmareste cursorul cat timp tragi; la eliberare trece la reclama
+     vecina daca ai tras peste 15% din latime sau ai dat un gest rapid,
+     altfel revine la loc. O miscare mai mult verticala e lasata paginii,
+     ca derularea normala pe telefon sa nu fie blocata. */
+  let tragere = null;
+  const reporneste = () => { clearInterval(bTimer); bTimer = setInterval(() => go(bi + 1), 6000); };
+  banner.addEventListener('pointerdown', e => {
+    if (e.button !== 0 || e.target.closest('.b-nav, .b-dots')) return;
+    tragere = { x: e.clientX, y: e.clientY, t: Date.now(), dx: 0, activ: false, id: e.pointerId };
+  });
+  banner.addEventListener('pointermove', e => {
+    if (!tragere || e.pointerId !== tragere.id) return;
+    const dx = e.clientX - tragere.x, dy = e.clientY - tragere.y;
+    if (!tragere.activ) {
+      if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+      if (Math.abs(dy) > Math.abs(dx)) { tragere = null; return; }
+      tragere.activ = true;
+      try { banner.setPointerCapture(e.pointerId); } catch (_) {}
+      track.style.transition = 'none';
+      banner.classList.add('trage');
+      clearInterval(bTimer);
+    }
+    tragere.dx = dx;
+    track.style.transform = 'translateX(calc(' + (-bi * 100) + '% + ' + dx + 'px))';
+  });
+  const termina = e => {
+    if (!tragere || e.pointerId !== tragere.id) return;
+    const t = tragere; tragere = null;
+    if (!t.activ) return;
+    track.style.transition = '';
+    banner.classList.remove('trage');
+    const lat = banner.clientWidth;
+    const rapid = Math.abs(t.dx) > 30 && Date.now() - t.t < 250;
+    if (t.dx < -lat * .15 || (rapid && t.dx < 0)) go(bi + 1);
+    else if (t.dx > lat * .15 || (rapid && t.dx > 0)) go(bi - 1);
+    else go(bi);
+    /* click-ul care urmeaza eliberarii nu trebuie sa deschida butonul reclamei */
+    banner.dataset.tras = '1';
+    setTimeout(() => { delete banner.dataset.tras; }, 0);
+    if (e.pointerType !== 'mouse') reporneste();
+  };
+  banner.addEventListener('pointerup', termina);
+  banner.addEventListener('pointercancel', termina);
+  banner.addEventListener('click', e => {
+    if (banner.dataset.tras) { e.preventDefault(); e.stopPropagation(); }
+  }, true);
+  banner.addEventListener('dragstart', e => e.preventDefault());
 }
 
 /* ---- taburi de produse (tot doar pe prima pagina) ---- */
