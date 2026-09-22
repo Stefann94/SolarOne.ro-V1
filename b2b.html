@@ -334,8 +334,10 @@ if (banner) {
   document.getElementById('bPrev').onclick = () => go(bi - 1);
   dots.forEach((d, i) => d.onclick = () => go(i));
   let bTimer = setInterval(() => go(bi + 1), 6000);
-  banner.addEventListener('mouseenter', () => clearInterval(bTimer));
-  banner.addEventListener('mouseleave', () => { bTimer = setInterval(() => go(bi + 1), 6000); });
+  /* pauza doar sub un mouse adevarat: pe telefon, o atingere simuleaza intrarea
+     mouse-ului fara iesire si ar fi oprit caruselul definitiv */
+  banner.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') clearInterval(bTimer); });
+  banner.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { clearInterval(bTimer); bTimer = setInterval(() => go(bi + 1), 6000); } });
   /* ---- tragere cu mouse-ul sau cu degetul ----
      Banda urmareste cursorul cat timp tragi; la eliberare trece la reclama
      vecina daca ai tras peste 15% din latime sau ai dat un gest rapid,

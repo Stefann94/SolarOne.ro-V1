@@ -228,7 +228,7 @@ body{overflow-x:clip;width:100%;max-width:100%}
 .slide .sl-txt > *{position:relative;z-index:1}
 .sl-tag,.sl-btn{white-space:nowrap}
 .slide .sl-txt{
-  padding:clamp(10px,3vw,18px) 10px clamp(22px,6.4vw,32px) clamp(36px,10.4vw,46px) !important;
+  padding:clamp(10px,3vw,18px) 10px clamp(22px,6.4vw,32px) clamp(14px,4.4vw,22px) !important;
   justify-content:center;min-width:0;
 }
 .slide .sl-txt::after{display:block;right:-26px;width:52px}
@@ -239,22 +239,14 @@ body{overflow-x:clip;width:100%;max-width:100%}
 .slide p{font-size:clamp(9.2px,2.55vw,12.6px) !important;line-height:1.36 !important;margin-bottom:clamp(6px,2vw,11px)}
 .sl-btn{font-size:clamp(9.4px,2.6vw,12.6px);padding:.68em 1.05em;border-radius:7px}
 .sl-note{font-size:clamp(7.4px,2.05vw,9.8px);margin-top:clamp(4px,1.3vw,7px)}
-.b-nav{width:clamp(24px,7vw,32px);height:clamp(24px,7vw,32px);font-size:clamp(14px,4vw,18px)}
-.b-nav.prev{left:clamp(6px,2vw,10px)}
-.b-nav.next{right:clamp(6px,2vw,10px)}
+/* fara sageti pe telefon: caruselul merge singur si se trage cu degetul */
+.b-nav{display:none !important}
 .b-dots{bottom:clamp(7px,2.4vw,12px);gap:5px}
 .b-dots span{width:6px;height:6px}
 .b-dots span.on{width:16px}
 
-/* ---- dalele promo de lângă carusel ---- */
-.side-promo{
-  display:flex !important;
-  gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
-  scrollbar-width:none;padding:12px 16px !important;margin:0 !important;
-  grid-template-columns:none !important;grid-auto-flow:row !important;
-}
-.side-promo::-webkit-scrollbar{display:none}
-.side-promo > *{flex:0 0 80%;scroll-snap-align:start;min-width:0}
+/* ---- casetele de langa carusel nu apar pe telefon ---- */
+.side-promo{display:none !important}
 
 /* ---- reclamele de categorie ---- */
 .tiles{
@@ -264,8 +256,14 @@ body{overflow-x:clip;width:100%;max-width:100%}
   grid-template-columns:none !important;grid-auto-flow:row !important;
 }
 .tiles::-webkit-scrollbar{display:none}
-.tiles > *{flex:0 0 78%;scroll-snap-align:start;min-width:0}
-.ad2{height:180px}
+.tiles > *{scroll-snap-align:start;min-width:0}
+/* Reclamele cu produse se micsoreaza uniform, cu tot continutul lor (texte,
+   logouri, fanion, fotografie), prin zoom: cardul e desenat la 190x200 si
+   scalat pe trepte de latime, ca pe ecran sa incapa cel putin doua si jumatate. */
+.tiles > .ad2{flex:0 0 190px;width:190px;height:200px;zoom:1}
+/* invelisul zonei de promotii nu are margine laterala pe telefon (hero-ul e
+   pe toata latimea), deci randul nu mai are ce margine sa compenseze */
+.promo-zone .tiles{margin:0;scroll-padding-inline:16px}
 
 /* ---- produsele de pe prima pagină: rând cu derulare ---- */
 .grid{
@@ -434,9 +432,14 @@ body{overflow-x:clip;width:100%;max-width:100%}
 /* =========================================================
    TELEFOANE ÎNGUSTE
    ========================================================= */
+@media(max-width:505px){ .tiles > .ad2{zoom:.92} }
+@media(max-width:475px){ .tiles > .ad2{zoom:.86} }
+@media(max-width:445px){ .tiles > .ad2{zoom:.8} }
+@media(max-width:415px){ .tiles > .ad2{zoom:.73} }
+@media(max-width:385px){ .tiles > .ad2{zoom:.67} }
+@media(max-width:355px){ .tiles > .ad2{zoom:.6} }
+
 @media(max-width:430px){
-  .side-promo > *{flex-basis:88%}
-  .tiles > *{flex-basis:86%}
   .grid > *{flex-basis:74%}
   .cats,.guides{grid-template-columns:minmax(0,1fr) !important}
   .brands{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}
