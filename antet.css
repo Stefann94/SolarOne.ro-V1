@@ -26,7 +26,7 @@
 .srch input::placeholder{color:var(--ink3)}
 .srch input:focus{outline:none;border-color:var(--blue);background:var(--w);box-shadow:0 0 0 4px rgba(11,68,196,.08)}
 .s-ic{position:absolute;left:16px;top:16px;width:18px;height:18px;color:var(--ink3);pointer-events:none}
-.srch kbd{position:absolute;right:12px;top:15px;font:600 10.5px Inter;color:var(--ink3);background:var(--w);
+.srch kbd{position:absolute;right:12px;top:15px;font:600 10.5px Roboto,sans-serif;color:var(--ink3);background:var(--w);
   border:1px solid var(--line);border-radius:5px;padding:3px 7px}
 .s-res{display:none;position:absolute;top:58px;left:0;right:0;background:var(--w);border:1px solid var(--line);
   border-radius:var(--r);box-shadow:var(--sh-h);overflow:hidden;z-index:300}
