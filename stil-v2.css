@@ -2473,6 +2473,5 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
 button,input,select,textarea{font-family:inherit}
 
 /* caruselul se poate trage cu mouse-ul sau cu degetul; derularea verticala ramane a paginii */
-.banner{touch-action:pan-y;cursor:grab;-webkit-user-select:none;user-select:none}
-.banner.trage{cursor:grabbing}
+.banner{touch-action:pan-y;cursor:pointer;-webkit-user-select:none;user-select:none}
 .banner img{-webkit-user-drag:none}
