@@ -217,26 +217,32 @@ body{overflow-x:clip;width:100%;max-width:100%}
    sagetile pe laterale si punctele centrate jos, doar la scara ecranului. */
 .promo-zone .wrap{padding:0}
 .promo-top{display:block}
-.banner{border-radius:0;height:320px}
+/* Inaltimea si tot continutul cresc proportional cu latimea ecranului (vw),
+   ca reclama sa arate la fel pe orice telefon; clamp() pune limite ca textul
+   sa nu devina ilizibil pe ecrane foarte mici sau urias pe tablete. */
+.banner{border-radius:0;height:clamp(234px,66vw,300px)}
 .b-track,.slide{height:100%}
 .slide{display:grid !important;grid-template-columns:1.05fr .95fr !important;overflow:hidden}
 /* pana oblica e inclinata, deci jos intra adanc in coloana de text; textul
    sta deasupra ei (au acelasi fundal), ca sa nu fie acoperit */
 .slide .sl-txt > *{position:relative;z-index:1}
 .sl-tag,.sl-btn{white-space:nowrap}
-.slide .sl-txt{padding:18px 10px 34px 42px !important;justify-content:center;min-width:0}
+.slide .sl-txt{
+  padding:clamp(10px,3vw,18px) 10px clamp(22px,6.4vw,32px) clamp(36px,10.4vw,46px) !important;
+  justify-content:center;min-width:0;
+}
 .slide .sl-txt::after{display:block;right:-26px;width:52px}
-.slide .sl-img{display:flex !important;padding:14px 10px 30px 24px;min-width:0}
-.slide .sl-img img{max-height:150px;max-width:100%;width:auto}
-.sl-tag{font-size:7.6px;padding:3px 7px;margin-bottom:8px;letter-spacing:.08em}
-.slide h2{font-size:15px !important;line-height:1.17 !important;margin-bottom:6px}
-.slide p{font-size:10.6px !important;line-height:1.4 !important;margin-bottom:10px}
-.sl-btn{font-size:11px;padding:8px 12px;border-radius:7px}
-.sl-note{font-size:8.6px;margin-top:7px}
-.b-nav{width:28px;height:28px;font-size:16px}
-.b-nav.prev{left:8px}
-.b-nav.next{right:8px}
-.b-dots{bottom:11px;gap:5px}
+.slide .sl-img{display:flex !important;padding:12px 10px 24px 24px;min-width:0}
+.slide .sl-img img{max-height:clamp(96px,32vw,170px);max-width:100%;width:auto}
+.sl-tag{font-size:clamp(6.6px,1.85vw,9px);padding:.4em .9em;margin-bottom:clamp(5px,1.6vw,9px);letter-spacing:.08em}
+.slide h2{font-size:clamp(12.4px,3.7vw,19px) !important;line-height:1.15 !important;margin-bottom:.35em}
+.slide p{font-size:clamp(9.2px,2.55vw,12.6px) !important;line-height:1.36 !important;margin-bottom:clamp(6px,2vw,11px)}
+.sl-btn{font-size:clamp(9.4px,2.6vw,12.6px);padding:.68em 1.05em;border-radius:7px}
+.sl-note{font-size:clamp(7.4px,2.05vw,9.8px);margin-top:clamp(4px,1.3vw,7px)}
+.b-nav{width:clamp(24px,7vw,32px);height:clamp(24px,7vw,32px);font-size:clamp(14px,4vw,18px)}
+.b-nav.prev{left:clamp(6px,2vw,10px)}
+.b-nav.next{right:clamp(6px,2vw,10px)}
+.b-dots{bottom:clamp(7px,2.4vw,12px);gap:5px}
 .b-dots span{width:6px;height:6px}
 .b-dots span.on{width:16px}
 
@@ -435,7 +441,6 @@ body{overflow-x:clip;width:100%;max-width:100%}
   .cats,.guides{grid-template-columns:minmax(0,1fr) !important}
   .brands{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}
   .cat-l .grid,.grid.grid-3{grid-template-columns:minmax(0,1fr) !important}
-  .slide h2{font-size:14px !important}
   .mb-logo img{height:48px}
   .mb-top{gap:6px;padding:0 10px}
   .mb-b{width:40px;height:40px}
