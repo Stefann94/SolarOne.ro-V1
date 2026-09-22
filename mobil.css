@@ -27,7 +27,7 @@
   --ink:#10151C; --ink2:#47535F; --ink3:#7D8A97;
   --line:#E5EAF0; --bg:#F7F9FC; --w:#fff; --r:12px;
   /* inaltimea barei de sus pe telefon; de ea atarna si bara de filtre */
-  --mb-h:60px;
+  --mb-h:68px;
 }
 
 /* --- elementele de telefon nu există pe desktop --- */
@@ -60,7 +60,7 @@ body{overflow-x:clip;width:100%;max-width:100%}
 }
 .mb-logo{flex:1;display:flex;align-items:center;min-width:0}
 .mb-logo img{
-  height:42px;width:auto;max-width:100%;
+  height:54px;width:auto;max-width:100%;
   object-fit:contain;object-position:left center;
 }
 
@@ -77,12 +77,6 @@ body{overflow-x:clip;width:100%;max-width:100%}
 .mb-i{width:20px;height:20px;display:block}
 .mb-cos{background:var(--blue);border-color:var(--blue);color:#fff}
 .mb-cos:active{background:var(--blue-d);border-color:var(--blue-d)}
-.mb-cos i{
-  position:absolute;top:-6px;right:-6px;
-  min-width:19px;height:19px;padding:0 4px;border-radius:10px;
-  background:var(--amber);color:#1B1500;border:2px solid var(--w);
-  font:800 10.5px/15px inherit;font-style:normal;text-align:center;
-}
 
 /* ---- randul de cautare, sub bara ---- */
 .mb-cauta{
@@ -93,20 +87,12 @@ body{overflow-x:clip;width:100%;max-width:100%}
 .mb-cauta .srch{width:100%;max-width:none;flex:none;position:relative}
 .mb-cauta .srch input{
   width:100%;height:46px;
-  padding:0 92px 0 42px;font-size:14.2px;
+  padding:0 92px 0 14px;font-size:14.2px;
   border:1.5px solid #DFE7F1;border-radius:12px;background:#F4F7FC;
 }
 .mb-cauta .srch input:focus{
   background:var(--w);border-color:var(--blue);
   box-shadow:0 0 0 3px rgba(11,68,196,.1);
-}
-/* lupa din stanga: antetul de desktop o are ca element separat, care pe
-   aceste pagini lipseste, asa ca o desenam din foaie */
-.mb-cauta .srch::after{
-  content:'';position:absolute;left:15px;top:50%;
-  width:17px;height:17px;transform:translateY(-50%);
-  pointer-events:none;opacity:.55;
-  background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%2347535F" stroke-width="2.1" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>') center/contain no-repeat;
 }
 /* pe categorie si produs lipseste resetarea globala a butoanelor, deci fara
    border:0 butonul primea conturul implicit al navigatorului */
@@ -117,6 +103,15 @@ body{overflow-x:clip;width:100%;max-width:100%}
 }
 .mb-cauta .s-btn svg{width:15px;height:15px}
 .mb-cauta .s-res{top:52px}
+/* linia informativa de sub camp */
+.mb-cauta-info{
+  display:flex;align-items:center;gap:7px;margin:8px 2px 0;
+  font-size:11.6px;font-weight:600;line-height:1.3;color:var(--ink3);
+}
+.mb-cauta-info i{
+  flex:none;width:7px;height:7px;border-radius:50%;background:#16A34A;
+  box-shadow:0 0 0 3px rgba(22,163,74,.16);
+}
 
 /* ---- bara fixă de jos ---- */
 .mb-jos{
@@ -467,7 +462,7 @@ body{overflow-x:clip;width:100%;max-width:100%}
   .cat-l .grid,.grid.grid-3{grid-template-columns:minmax(0,1fr) !important}
   .sl-txt h2{font-size:20.5px !important}
   .banner{height:352px}
-  .mb-logo img{height:38px}
+  .mb-logo img{height:48px}
   .mb-top{gap:6px;padding:0 10px}
   .mb-b{width:40px;height:40px}
   .b2b-hero h1{font-size:24px}

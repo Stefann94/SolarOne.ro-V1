@@ -568,6 +568,7 @@ const DEPOZITE = [{"oras":"Piatra Neamț","strada":"Str. Nordului 8A","telefon":
     cos: '<path d="M4 5h2l2.2 10.2a2 2 0 0 0 2 1.6h6.9a2 2 0 0 0 2-1.5L21 8H7"/><circle cx="10" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/>',
     acasa: '<path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/>',
     grila: '<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',
+    profil: '<circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="10" r="3.2"/><path d="M6.3 18.6c1.3-2.3 3.3-3.4 5.7-3.4s4.4 1.1 5.7 3.4"/>',
     cont: '<circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c1.3-3.4 4-5 7-5s5.7 1.6 7 5"/>',
     inapoi: '<path d="M15 5l-7 7 7 7"/>',
     x: '<path d="M6 6l12 12M18 6L6 18"/>',
@@ -597,14 +598,15 @@ const DEPOZITE = [{"oras":"Piatra Neamț","strada":"Str. Nordului 8A","telefon":
     top.innerHTML =
       '<button class="mb-b" type="button" data-rol="meniu" aria-label="Meniu">' + svg(ico.meniu) + '</button>' +
       '<a class="mb-logo" href="index.html"><img src="' + (sigla ? sigla.getAttribute('src') : '') + '" alt="SolarOne"></a>' +
-      '<button class="mb-b" type="button" data-rol="cauta" aria-label="Caută">' + svg(ico.cauta) + '</button>' +
-      '<a class="mb-b mb-cos" href="#" aria-label="Coș">' + svg(ico.cos) + '<i>0</i></a>';
+      '<a class="mb-b mb-profil" href="#" aria-label="Contul meu">' + svg(ico.profil) + '</a>' +
+      '<a class="mb-b mb-cos" href="#" aria-label="Coș">' + svg(ico.cos) + '</a>';
     document.body.insertBefore(top, document.body.firstChild);
 
     /* ---- rândul de căutare, imediat sub bară ----
        Reținem întâi locul din antetul de desktop (părinte și vecin), ca bara
        să se poată întoarce exact acolo la lărgirea ferestrei. */
-    randCautare = el('mb-cauta', '');
+    randCautare = el('mb-cauta',
+      '<p class="mb-cauta-info"><i></i>Stoc propriu în 9 depozite · livrare în 24–48 h</p>');
     document.body.insertBefore(randCautare, top.nextSibling);
     var bara = document.querySelector('.srch');
     if (bara) {
@@ -733,7 +735,7 @@ const DEPOZITE = [{"oras":"Piatra Neamț","strada":"Str. Nordului 8A","telefon":
     }
     if (rez && rez.parentNode !== bara) bara.appendChild(rez);
     if (unde === 'rand') {
-      if (bara.parentNode !== randCautare) randCautare.appendChild(bara);
+      if (bara.parentNode !== randCautare) randCautare.insertBefore(bara, randCautare.firstChild);
       scurteaza();
     } else if (gazdaCautare) {
       if (bara.parentNode !== gazdaCautare) gazdaCautare.insertBefore(bara, ancoraCautare);
