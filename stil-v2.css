@@ -2814,17 +2814,3 @@ html.antet-sus{--sus-fix:calc(var(--nav-h,62px) + 16px)}
   .cat-l .grid,.grid.grid-3{grid-template-columns:1fr !important}
 }
 
-/* =========================================================
-   SUBLINIEREA BUTONULUI ȘI RAMA MENIULUI — O SINGURĂ LINIE
-   Capătul de jos al butonului coincide cu marginea de sus a panoului
-   la orice lățime (verificat la 1500, 1300, 1100 și 900 px), așa că
-   subliniera se coboară exact peste banda ramei: aceeași grosime,
-   aceeași culoare, același rând de pixeli. Nimic nu e legat de o
-   lățime anume, deci se comportă la fel pe orice ecran.
-   ========================================================= */
-.mega{border-top:3px solid var(--amber)}
-.nav-l > li > a::after{
-  left:0;right:0;
-  bottom:-3px;
-  height:3px;
-}
